@@ -1,0 +1,28 @@
+@mixin flexCenter($align, $direction) {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: $align;
+  flex-direction: $direction;
+}
+@mixin border-bottom($m-bottom, $p-bottom, $opacity) {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgba(150, 150, 150, $opacity);
+  margin-bottom: $m-bottom;
+  padding-bottom: $p-bottom;
+}
+
+// color
+$font-color: #555;
+$color-border: rgba(150, 150, 150, 0.3);
+
+$category-color1: #ffbe0b;
+
+$category-color2: #fb5607;
+
+$category-color3: #ff006e;
+
+$category-color4: #8338ec;
+
+$category-color5: #3a86ff;

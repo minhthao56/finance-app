@@ -1,0 +1,130 @@
+@import "../../CSSSRecylce/mixin.scss";
+
+.container-form-expense {
+  @include flexCenter(flex-start, column);
+  width: 100%;
+  form {
+    width: 100%;
+  }
+  .amount-expense {
+    @include border-bottom(5px, 5px, 0.3);
+    input {
+      font-size: 16px;
+      color: $font-color;
+    }
+  }
+  .description-expense {
+    @include border-bottom(5px, 5px, 0.3);
+  }
+}
+.header-expense {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  color: $font-color;
+  font: {
+    size: 18px;
+    weight: 600;
+  }
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: $color-border;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  i {
+    margin-right: 5px;
+    padding-right: 5px;
+  }
+}
+.expense {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  input {
+    width: 100%;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+// container-category
+
+.container-category {
+  @include flexCenter(center, row);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  input {
+    width: initial;
+    opacity: 0;
+  }
+}
+
+.form-category {
+  box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 0.75);
+  background-color: white;
+  @include flexCenter(flex-start, column);
+  width: 400px;
+  padding: 10px 10px 10px 50px;
+  font-size: 14px;
+  opacity: 0.5;
+
+  label {
+    display: flex;
+    cursor: pointer;
+  }
+}
+.container-category-icon {
+  margin-left: 24px;
+}
+.category-icon {
+  margin-bottom: 10px;
+}
+.icon {
+  @include flexCenter(center, row);
+  width: 400px;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  font-size: 13px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.category-color1 {
+  background-color: $category-color1;
+}
+.category-color2 {
+  background-color: $category-color2;
+}
+.category-color3 {
+  background-color: $category-color3;
+}
+.category-color4 {
+  background-color: $category-color4;
+}
+.category-color5 {
+  background-color: $category-color5;
+}
+
+.header-category {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+
+  @include border-bottom(15px, 5px, 0.2);
+
+  .icon-header-category {
+    background-color: #264653;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+}

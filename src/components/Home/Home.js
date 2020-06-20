@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col } from "antd";
+import React from "react";
+import Grid from "@material-ui/core/Grid";
 
 import "../Home/Home.scss";
-import "antd/dist/antd.css";
 
 import ChartLine from "../Chart/LineChart";
 import Expense from "../Expense/Expense";
 
 export default function Home() {
   return (
-    <div>
-      <Row id="row-home">
-        <Col span={14}>
-          <ChartLine />
-        </Col>
-        <Col span={10}>
-          <Expense />
-        </Col>
-      </Row>
+    <div className="container-home">
+      <Grid item xs={7}>
+        <ChartLine />
+      </Grid>
+      <Grid item xs={5} id="grid-expense">
+        <Expense />
+      </Grid>
     </div>
   );
 }
