@@ -5,6 +5,12 @@
   align-items: $align;
   flex-direction: $direction;
 }
+@mixin displayFlex($align, $direction, $justify) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
 @mixin border-bottom($m-bottom, $p-bottom, $opacity) {
   border-bottom: solid;
   border-width: 1px;
@@ -15,6 +21,7 @@
 
 // color
 $font-color: #555;
+
 $color-border: rgba(150, 150, 150, 0.3);
 
 $category-color1: #ffbe0b;
@@ -26,3 +33,5 @@ $category-color3: #ff006e;
 $category-color4: #8338ec;
 
 $category-color5: #3a86ff;
+
+$main-coler: rgba(196, 161, 251, 1);

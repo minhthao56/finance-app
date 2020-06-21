@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
 import Alert from "@material-ui/lab/Alert";
+import { Row, Col } from "antd";
+import "antd/dist/antd.css";
 
 import ImageFinance from "../../images/finance.png";
 import WellCome from "../../images/Welcome.png";
@@ -88,73 +89,81 @@ export default function User() {
   };
   return (
     <div className="containe-signup">
-      <Grid item xl={6}>
-        <img src={WellCome} className="welcome-signup" />
-      </Grid>
-
-      <Grid item xl={6}>
-        <div className="contaiter-form">
-          <div className="logo-signup">
-            <img src={ImageFinance} />
-            <h1>money</h1>
+      <Row>
+        <Col xs={0} sm={0} md={0} lg={12} xl={12}>
+          <div className="col1-signup">
+            <img src={WellCome} alt="" className="wellcome-signup" />
           </div>
-          {isErrCreateUser === true ? (
-            <Alert severity="error">Email already exists</Alert>
-          ) : null}
+        </Col>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+          <div className="col2-signup">
+            <div className="contaiter-form">
+              <div className="logo-signup">
+                <img src={ImageFinance} />
+                <h1>money</h1>
+              </div>
+              {isErrCreateUser === true ? (
+                <Alert severity="error">Email already exists</Alert>
+              ) : null}
 
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              {isErrName ? (
-                <span className="msg-err">*{msgErrName}</span>
-              ) : null}
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={valueName}
-                onChange={handleChangeName}
-                required
-              />
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  {isErrName ? (
+                    <span className="msg-err">*{msgErrName}</span>
+                  ) : null}
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={valueName}
+                    onChange={handleChangeName}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  {isErrEmail ? (
+                    <span className="msg-err">*{msgErrEmail}</span>
+                  ) : null}
+                  <input
+                    type="email"
+                    name="email"
+                    value={valueEmail}
+                    placeholder="Email"
+                    onChange={handleChangeEmail}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  {isErrPass ? (
+                    <span className="msg-err">*{msgErrPass}</span>
+                  ) : null}
+                  <input
+                    type="password"
+                    name="password"
+                    value={valuePassword}
+                    placeholder="Password"
+                    onChange={handleChangePasword}
+                    required
+                  />
+                </div>
+                <button type="submit">Sign up</button>
+              </form>
+              <p className="policy">
+                By signing up, you agree to our{" "}
+                <b>Terms , Data Policy and Cookies Policy .</b>
+              </p>
             </div>
-            <div className="form-group">
-              {isErrEmail ? (
-                <span className="msg-err">*{msgErrEmail}</span>
-              ) : null}
-              <input
-                type="email"
-                name="email"
-                value={valueEmail}
-                placeholder="Email"
-                onChange={handleChangeEmail}
-                required
-              />
+            <div className="have-account">
+              <span>
+                Have an account?{" "}
+                <Link to="/users/login">
+                  <b>Log in</b>
+                </Link>
+              </span>
             </div>
-            <div className="form-group">
-              {isErrPass ? (
-                <span className="msg-err">*{msgErrPass}</span>
-              ) : null}
-              <input
-                type="password"
-                name="password"
-                value={valuePassword}
-                placeholder="Password"
-                onChange={handleChangePasword}
-                required
-              />
-            </div>
-            <button type="submit">Sign up</button>
-          </form>
-          <p className="policy">
-            By signing up, you agree to our{" "}
-            <b>Terms , Data Policy and Cookies Policy .</b>
-          </p>
-        </div>
-        <div className="have-account">
-          <span>
-            Have an account? <Link to="/users/login">Log in</Link>
-          </span>
-        </div>
-      </Grid>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }

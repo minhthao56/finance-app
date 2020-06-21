@@ -1,20 +1,28 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import { Row, Col } from "antd";
 
 import "../Home/Home.scss";
 
 import ChartLine from "../Chart/LineChart";
 import Expense from "../Expense/Expense";
+import Nav from "../Nav/Nav";
 
 export default function Home() {
   return (
-    <div className="container-home">
-      <Grid item xs={7}>
-        <ChartLine />
-      </Grid>
-      <Grid item xs={5} id="grid-expense">
-        <Expense />
-      </Grid>
+    <div>
+      <div>
+        <Nav />
+      </div>
+      <div className="container-home">
+        <Row>
+          <Col span={14}>
+            <ChartLine />
+          </Col>
+          <Col span={10}>
+            <Expense />
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }
