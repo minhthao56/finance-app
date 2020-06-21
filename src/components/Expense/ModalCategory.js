@@ -6,6 +6,12 @@ export default function ModalCategory(props) {
   const [isExpend1, setIsExpend1] = useState(false);
   const [isExpend2, setIsExpend2] = useState(false);
   const [isExpend3, setIsExpend3] = useState(false);
+  const [isExpend4, setIsExpend4] = useState(false);
+  const [isExpend5, setIsExpend5] = useState(false);
+  const [isExpend6, setIsExpend6] = useState(false);
+  const [isExpend7, setIsExpend7] = useState(false);
+  const [isExpend8, setIsExpend8] = useState(false);
+  const [isExpend9, setIsExpend9] = useState(false);
 
   const { hanleCloseCategory } = props;
   const dispatch = useDispatch();
@@ -26,10 +32,32 @@ export default function ModalCategory(props) {
     if (num === 3) {
       setIsExpend3(!isExpend3);
     }
+    if (num === 4) {
+      setIsExpend4(!isExpend4);
+    }
+    if (num === 5) {
+      setIsExpend5(!isExpend5);
+    }
+    if (num === 6) {
+      setIsExpend6(!isExpend6);
+    }
+    if (num === 7) {
+      setIsExpend7(!isExpend7);
+    }
+    if (num === 8) {
+      setIsExpend8(!isExpend8);
+    }
+    if (num === 9) {
+      setIsExpend9(!isExpend9);
+    }
   };
   return (
     <div className="container-category">
       <div className="form-category">
+        <div className="header-container-category">
+          <i className="fas fa-cubes"></i>
+          <span>Category</span>
+        </div>
         <div>
           <div
             onClick={() => {
@@ -37,7 +65,10 @@ export default function ModalCategory(props) {
             }}
             className="header-category"
           >
-            <div className=" icon icon-header-category">
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#003049" }}
+            >
               <i className="fas fa-hamburger"></i>
             </div>
             <span>Food and Beverage</span>
@@ -57,7 +88,7 @@ export default function ModalCategory(props) {
                   Cafe
                   <input
                     type="radio"
-                    value={["cafe", "1", "fas fa-mug-hot"]}
+                    value={["Cafe", "1", "fas fa-mug-hot"]}
                     onChange={handleSelectCategory}
                     name="category"
                   />
@@ -71,7 +102,7 @@ export default function ModalCategory(props) {
                   Breakfast
                   <input
                     type="radio"
-                    value={["breakfast", "2", "fas fa-bread-slice"]}
+                    value={["Breakfast", "2", "fas fa-bread-slice"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -85,7 +116,7 @@ export default function ModalCategory(props) {
                   Lunch
                   <input
                     type="radio"
-                    value={["lunch", "3", "fas fa-concierge-bell"]}
+                    value={["Lunch", "3", "fas fa-concierge-bell"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -99,7 +130,7 @@ export default function ModalCategory(props) {
                   Dinner{" "}
                   <input
                     type="radio"
-                    value={["dinner", "4", "fas fa-utensils"]}
+                    value={["Dinner", "4", "fas fa-utensils"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -113,7 +144,7 @@ export default function ModalCategory(props) {
                   Drink
                   <input
                     type="radio"
-                    value={["drink", "5", "fas fa-glass-cheers"]}
+                    value={["Drink", "5", "fas fa-glass-cheers"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -127,7 +158,7 @@ export default function ModalCategory(props) {
                   Others
                   <input
                     type="radio"
-                    value={["drink", "1", "fas fa-cookie-bite"]}
+                    value={["Others", "1", "fas fa-cookie-bite"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -136,7 +167,7 @@ export default function ModalCategory(props) {
             </div>
           </Collapse>
         </div>
-        {/* ---------------------------------------------------- */}
+        {/* ---------------------------Home------------------------- */}
         <div>
           <div
             onClick={() => {
@@ -146,7 +177,7 @@ export default function ModalCategory(props) {
           >
             <div
               className=" icon icon-header-category"
-              style={{ backgroundColor: "#2a9d8f" }}
+              style={{ backgroundColor: "#d62828" }}
             >
               <i className="fas fa-home"></i>
             </div>
@@ -167,7 +198,7 @@ export default function ModalCategory(props) {
                   House fee
                   <input
                     type="radio"
-                    value={[" house-fee", "1", "fas fa-money-bill-wave-alt"]}
+                    value={["House Fee", "1", "fas fa-money-bill-wave-alt"]}
                     onChange={handleSelectCategory}
                     name="category"
                   />
@@ -181,7 +212,7 @@ export default function ModalCategory(props) {
                   Electricity
                   <input
                     type="radio"
-                    value={["electricity", "2", "fas fa-lightbulb"]}
+                    value={["Electricity", "2", "fas fa-lightbulb"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -195,7 +226,7 @@ export default function ModalCategory(props) {
                   Cable TV
                   <input
                     type="radio"
-                    value={("cable-tv", "3", "fas fa-desktop")}
+                    value={["Cable TV", "3", "fas fa-desktop"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -209,7 +240,7 @@ export default function ModalCategory(props) {
                   Gas
                   <input
                     type="radio"
-                    value={["gas", "4", "fas fa-fire"]}
+                    value={["Gas", "4", "fas fa-fire"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -223,7 +254,7 @@ export default function ModalCategory(props) {
                   Water
                   <input
                     type="radio"
-                    value={["water", "5", "fas fa-faucet"]}
+                    value={["Water", "5", "fas fa-faucet"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -237,7 +268,7 @@ export default function ModalCategory(props) {
                   Phone
                   <input
                     type="radio"
-                    value={["phone", "1", "fas fa-faucet"]}
+                    value={["Phone", "1", "fas fa-faucet"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -251,7 +282,7 @@ export default function ModalCategory(props) {
                   Internet
                   <input
                     type="radio"
-                    value={["internet", "2", "fas fa-globe-asia"]}
+                    value={["Internet", "2", "fas fa-globe-asia"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -260,7 +291,7 @@ export default function ModalCategory(props) {
             </div>
           </Collapse>
         </div>
-        {/* ------------------------------------------------ */}
+        {/* --------------------tansport---------------------------- */}
         <div>
           <div
             onClick={() => {
@@ -270,11 +301,11 @@ export default function ModalCategory(props) {
           >
             <div
               className=" icon icon-header-category"
-              style={{ backgroundColor: "#2a9d8f" }}
+              style={{ backgroundColor: "#f77f00" }}
             >
-              <i className="fas fa-home"></i>
+              <i className="fas fa-traffic-light"></i>
             </div>
-            <span>Home</span>
+            <span>Auto And Transport</span>
           </div>
           <Collapse
             in={isExpend3}
@@ -286,12 +317,12 @@ export default function ModalCategory(props) {
               <div className="category-icon">
                 <label>
                   <div className="icon category-color1">
-                    <i className="fas fa-money-bill-wave-alt"></i>
+                    <i className="fas fa-car-side"></i>
                   </div>
-                  House fee
+                  Car Wash
                   <input
                     type="radio"
-                    value={[" house-fee", "1", "fas fa-money-bill-wave-alt"]}
+                    value={["Car Wash", "1", "fas fa-car-side"]}
                     onChange={handleSelectCategory}
                     name="category"
                   />
@@ -300,12 +331,12 @@ export default function ModalCategory(props) {
               <div className="category-icon ">
                 <label>
                   <div className="icon category-color2">
-                    <i className="fas fa-lightbulb"></i>
+                    <i className="fas fa-gas-pump"></i>
                   </div>
-                  Electricity
+                  Fuel
                   <input
                     type="radio"
-                    value={["electricity", "2", "fas fa-lightbulb"]}
+                    value={["Fuel", "2", "fas fa-gas-pump"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -314,12 +345,12 @@ export default function ModalCategory(props) {
               <div className="category-icon ">
                 <label>
                   <div className="icon category-color3">
-                    <i className="fas fa-desktop"></i>
+                    <i className="fas fa-parking"></i>
                   </div>
-                  Cable TV
+                  Parking
                   <input
                     type="radio"
-                    value={("cable-tv", "3", "fas fa-desktop")}
+                    value={["Parking", "3", "fas fa-parking"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -328,12 +359,12 @@ export default function ModalCategory(props) {
               <div className="category-icon ">
                 <label>
                   <div className="icon category-color4">
-                    <i className="fas fa-fire"></i>
+                    <i className="fas fa-tools"></i>
                   </div>
-                  Gas
+                  Repair Vehicles
                   <input
                     type="radio"
-                    value={["gas", "4", "fas fa-fire"]}
+                    value={["Repair Vehicles", "4", "fas fa-tools"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -342,40 +373,12 @@ export default function ModalCategory(props) {
               <div className="category-icon ">
                 <label>
                   <div className="icon category-color5">
-                    <i class="fas fa-faucet"></i>
+                    <i className="fas fa-taxi"></i>
                   </div>
-                  Water
+                  Taxi
                   <input
                     type="radio"
-                    value={["water", "5", "fas fa-faucet"]}
-                    name="category"
-                    onChange={handleSelectCategory}
-                  />
-                </label>
-              </div>
-              <div className="category-icon ">
-                <label>
-                  <div className="icon category-color1">
-                    <i className="fas fa-faucet"></i>
-                  </div>
-                  Phone
-                  <input
-                    type="radio"
-                    value={["phone", "1", "fas fa-faucet"]}
-                    name="category"
-                    onChange={handleSelectCategory}
-                  />
-                </label>
-              </div>
-              <div className="category-icon ">
-                <label>
-                  <div className="icon category-color2">
-                    <i className="fas fa-globe-asia"></i>
-                  </div>
-                  Internet
-                  <input
-                    type="radio"
-                    value={["internet", "2", "fas fa-globe-asia"]}
+                    value={["Taxi", "5", "fas fa-taxi"]}
                     name="category"
                     onChange={handleSelectCategory}
                   />
@@ -384,13 +387,451 @@ export default function ModalCategory(props) {
             </div>
           </Collapse>
         </div>
-        <button
-          onClick={() => {
-            return hanleCloseCategory();
-          }}
-        >
-          CLOSE
-        </button>
+        {/* --------------------Kids---------------------------- */}
+        <div>
+          <div
+            onClick={() => {
+              return handleEpendCategory(4);
+            }}
+            className="header-category"
+          >
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#fcbf49" }}
+            >
+              <i className="fas fa-baby"></i>
+            </div>
+            <span>Kids</span>
+          </div>
+          <Collapse
+            in={isExpend4}
+            timeout="auto"
+            unmountOnExit
+            disableStrictModeCompat={true}
+          >
+            <div className="container-category-icon">
+              <div className="category-icon">
+                <label>
+                  <div className="icon category-color1">
+                    <i class="fas fa-prescription-bottle"></i>
+                  </div>
+                  Baby Supplies
+                  <input
+                    type="radio"
+                    value={["Baby Supplies", "1", "fas fa-prescription-bottle"]}
+                    onChange={handleSelectCategory}
+                    name="category"
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color2">
+                    <i className="fas fa-gamepad"></i>
+                  </div>
+                  Toys
+                  <input
+                    type="radio"
+                    value={["Toys", "2", "fas fa-gamepad"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color3">
+                    <i class="fas fa-book-reader"></i>
+                  </div>
+                  Books
+                  <input
+                    type="radio"
+                    value={["Books", "3", "fas fa-book-reader"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color4">
+                    <i className="fas fa-dollar-sign"></i>
+                  </div>
+                  Tuition
+                  <input
+                    type="radio"
+                    value={["Tuition", "4", "fas fa-dollar-sign"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+            </div>
+          </Collapse>
+        </div>
+        {/* --------------------Clothing---------------------------- */}
+        <div>
+          <div
+            onClick={() => {
+              return handleEpendCategory(5);
+            }}
+            className="header-category"
+          >
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#eae2b7" }}
+            >
+              <i className="fas fa-tshirt"></i>
+            </div>
+            <span>Clothing</span>
+          </div>
+          <Collapse
+            in={isExpend5}
+            timeout="auto"
+            unmountOnExit
+            disableStrictModeCompat={true}
+          >
+            <div className="container-category-icon">
+              <div className="category-icon">
+                <label>
+                  <div className="icon category-color1">
+                    <i className="fas fa-clock"></i>
+                  </div>
+                  Watch
+                  <input
+                    type="radio"
+                    value={["Watch", "1", "fas fa-clock"]}
+                    onChange={handleSelectCategory}
+                    name="category"
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color2">
+                    <i className="fas fa-tshirt"></i>
+                  </div>
+                  Clothes
+                  <input
+                    type="radio"
+                    value={["Clothes", "2", "fas fa-tshirt"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color3">
+                    <i className="fas fa-shoe-prints"></i>
+                  </div>
+                  Shoes
+                  <input
+                    type="radio"
+                    value={["Choes", "3", "fas fa-shoe-prints"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+            </div>
+          </Collapse>
+        </div>
+        {/* --------------------Gifts---------------------------- */}
+        <div>
+          <div
+            onClick={() => {
+              return handleEpendCategory(6);
+            }}
+            className="header-category"
+          >
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#05668d" }}
+            >
+              <i className="fas fa-gifts"></i>
+            </div>
+            <span>Gifts & Donations</span>
+          </div>
+          <Collapse
+            in={isExpend6}
+            timeout="auto"
+            unmountOnExit
+            disableStrictModeCompat={true}
+          >
+            <div className="container-category-icon">
+              <div className="category-icon">
+                <label>
+                  <div className="icon category-color1">
+                    <i class="fas fa-hand-holding-heart"></i>
+                  </div>
+                  Charity
+                  <input
+                    type="radio"
+                    value={["Watch", "1", "fas fa-hand-holding-heart"]}
+                    onChange={handleSelectCategory}
+                    name="category"
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color2">
+                    <i className="fas fa-sad-tear"></i>
+                  </div>
+                  Funerals
+                  <input
+                    type="radio"
+                    value={["Funerals", "2", "fas fa-sad-tear"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color3">
+                    <i className="fas fa-gift"></i>
+                  </div>
+                  Gifts
+                  <input
+                    type="radio"
+                    value={["Choes", "3", "fas fa-gift"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color4">
+                    <i className="fas fa-ring"></i>
+                  </div>
+                  Marriages
+                  <input
+                    type="radio"
+                    value={["Marriages", "4", "fas fa-ring"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+            </div>
+          </Collapse>
+        </div>
+        {/* --------------------Healthy---------------------------- */}
+        <div>
+          <div
+            onClick={() => {
+              return handleEpendCategory(7);
+            }}
+            className="header-category"
+          >
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#028090" }}
+            >
+              <i className="fas fa-prescription-bottle-alt"></i>
+            </div>
+            <span>Healthy & Fitness</span>
+          </div>
+          <Collapse
+            in={isExpend7}
+            timeout="auto"
+            unmountOnExit
+            disableStrictModeCompat={true}
+          >
+            <div className="container-category-icon">
+              <div className="category-icon">
+                <label>
+                  <div className="icon category-color1">
+                    <i className="fas fa-user-md"></i>
+                  </div>
+                  Docter
+                  <input
+                    type="radio"
+                    value={["Docter", "1", "fas fa-user-md"]}
+                    onChange={handleSelectCategory}
+                    name="category"
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color2">
+                    <i className="fas fa-capsules"></i>
+                  </div>
+                  Pharmacy
+                  <input
+                    type="radio"
+                    value={["Pharmacy", "2", "fas fa-capsules"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color3">
+                    <i className="fas fa-futbol"></i>
+                  </div>
+                  Sports
+                  <input
+                    type="radio"
+                    value={["Sports", "3", "fas fa-futbol"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color4">
+                    <i className="fas fa-dumbbell"></i>
+                  </div>
+                  Gym
+                  <input
+                    type="radio"
+                    value={["Gym", "4", "fas fa-dumbbell"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+            </div>
+          </Collapse>
+        </div>
+        {/* --------------------Entertainment---------------------------- */}
+        <div>
+          <div
+            onClick={() => {
+              return handleEpendCategory(8);
+            }}
+            className="header-category"
+          >
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#00a896" }}
+            >
+              <i className="fas fa-building"></i>
+            </div>
+            <span>Entertainment</span>
+          </div>
+          <Collapse
+            in={isExpend8}
+            timeout="auto"
+            unmountOnExit
+            disableStrictModeCompat={true}
+          >
+            <div className="container-category-icon">
+              <div className="category-icon">
+                <label>
+                  <div className="icon category-color1">
+                    <i className="fas fa-headphones-alt"></i>
+                  </div>
+                  Music
+                  <input
+                    type="radio"
+                    value={["Music", "1", "fas fa-headphones-alt"]}
+                    onChange={handleSelectCategory}
+                    name="category"
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color2">
+                    <i className="fas fa-film"></i>
+                  </div>
+                  Movies
+                  <input
+                    type="radio"
+                    value={["Movies", "2", "fas fa-film"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color3">
+                    <i className="fas fa-plane-departure"></i>
+                  </div>
+                  Travel
+                  <input
+                    type="radio"
+                    value={["Travel", "3", "fas fa-plane-departure"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+            </div>
+          </Collapse>
+        </div>
+        {/* ----------------------Person-------------------------- */}
+        <div>
+          <div
+            onClick={() => {
+              return handleEpendCategory(9);
+            }}
+            className="header-category"
+          >
+            <div
+              className=" icon icon-header-category"
+              style={{ backgroundColor: "#02c39a" }}
+            >
+              <i className="fas fa-user"></i>
+            </div>
+            <span>Person</span>
+          </div>
+          <Collapse
+            in={isExpend9}
+            timeout="auto"
+            unmountOnExit
+            disableStrictModeCompat={true}
+          >
+            <div className="container-category-icon">
+              <div className="category-icon">
+                <label>
+                  <div className="icon category-color1">
+                    <i className="fas fa-graduation-cap"></i>
+                  </div>
+                  Education
+                  <input
+                    type="radio"
+                    value={["Education", "1", "fas fa-graduation-cap"]}
+                    onChange={handleSelectCategory}
+                    name="category"
+                  />
+                </label>
+              </div>
+              <div className="category-icon ">
+                <label>
+                  <div className="icon category-color2">
+                    <i className="fas fa-heart"></i>
+                  </div>
+                  Hoppies
+                  <input
+                    type="radio"
+                    value={["Hoppies", "2", "fas fa-heart"]}
+                    name="category"
+                    onChange={handleSelectCategory}
+                  />
+                </label>
+              </div>
+            </div>
+          </Collapse>
+        </div>
+        <div className="bt-lose-category">
+          <button
+            onClick={() => {
+              return hanleCloseCategory();
+            }}
+          >
+            CLOSE
+          </button>
+        </div>
       </div>
     </div>
   );

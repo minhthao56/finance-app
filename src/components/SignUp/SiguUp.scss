@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap");
+.logo-signup {
+  font-family: "Merienda", cursive;
+  display: flex;
+  color: #1b1e4b;
+  img {
+    height: 60px;
+    width: 60px;
+  }
+}
+.containe-signup {
+  display: flex;
+  .welcome-signup {
+    width: 500px;
+  }
+}

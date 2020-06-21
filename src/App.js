@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import DashBoard from "./components/Dashboard/Dashboard";
 import Home from "./components/Home/Home";
+import SignUp from "./components/SignUp/SignUp";
 
 export default function App() {
   return (
@@ -15,17 +16,20 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/dashboard">DashBoard</Link>
+            </li>
+            <li>
+              <Link to="/user/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/user/signup">Sign Up</Link>
             </li>
           </ul>
         </nav>
         <Switch>
-          <Route path="/dashboard">
-            <DashBoard />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route exact path={`/`} component={Home} />
+          <Route exact path={`/dashboard`} component={DashBoard} />
+          <Route exact path={`/user/signup`} component={SignUp} />
         </Switch>
       </div>
     </Router>
