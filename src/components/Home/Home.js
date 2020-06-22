@@ -8,6 +8,9 @@ import Expense from "../Expense/Expense";
 import Nav from "../Nav/Nav";
 import CardEpense from "../CardEpense/CardEpense";
 import Currency from "../Currency/Currency";
+import CardTotal from "../CardTotal/CardTotal";
+import CardRateWenk from "../CardTotal/CardRateWenk";
+import CardRateMonth from "../CardTotal/CardRateMonth";
 
 export default function Home() {
   return (
@@ -17,15 +20,15 @@ export default function Home() {
       </div>
       <div className="container-home">
         <h2>Home</h2>
-        <Row>
+        <Row gutter={[16, 16]}>
           <Col span={6}>
-            <div>col1</div>
+            <CardTotal />
           </Col>
           <Col span={6}>
-            <div>col2</div>
+            <CardRateWenk />
           </Col>
           <Col span={6}>
-            <div>col3</div>
+            <CardRateMonth />
           </Col>
           <Col span={6}>
             <div>col4</div>
