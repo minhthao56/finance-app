@@ -1,6 +1,22 @@
+@import "../../CSSSRecylce/mixin.scss";
 nav {
-  display: flex;
-  align-items: center;
+  border: {
+    bottom: solid;
+    width: 1px;
+    color: rgba(196, 161, 251, 0.3);
+  }
+  margin-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  .container-nav {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  .link-nav {
+    color: $main-coler;
+  }
 }
 .logo-nav {
   margin-right: auto;

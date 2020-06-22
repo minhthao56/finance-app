@@ -4,6 +4,7 @@
   @include flexCenter(flex-start, column);
   width: 100%;
   border: solid;
+  margin-left: 30px;
   border: {
     width: 1px;
     radius: 3px;
@@ -55,19 +56,35 @@
   display: flex;
   width: 100%;
   align-items: center;
-  color: #bd63f9;
-  font: {
-    size: 22px;
-    weight: 600;
-  }
+
   border-bottom: solid;
   border-width: 1px;
   border-color: $color-border;
   margin-bottom: 5px;
   padding-bottom: 5px;
-  i {
-    margin-right: 5px;
-    padding-right: 5px;
+
+  .icons-header-expense {
+    display: flex;
+    align-items: center;
+    div {
+      background-color: #d62828;
+      height: 26px;
+      width: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      margin-right: 5px;
+    }
+    i {
+      color: white;
+      font-size: 13px;
+    }
+    h3 {
+      font-size: 18px;
+      margin: 0;
+      color: rgba(27, 29, 78, 1);
+    }
   }
 }
 .expense {

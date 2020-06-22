@@ -32,8 +32,12 @@ export default function Expense() {
   return (
     <div className="container-form-expense">
       <div className="header-expense">
-        <i className="fas fa-money-check-alt"></i>
-        <span>Expense</span>
+        <div className="icons-header-expense">
+          <div>
+            <i class="fas fa-money-bill-wave-alt"></i>
+          </div>
+          <h3>Expense</h3>
+        </div>
       </div>
       <form>
         <div className="expense amount-expense">

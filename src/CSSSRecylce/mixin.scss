@@ -18,6 +18,12 @@
   margin-bottom: $m-bottom;
   padding-bottom: $p-bottom;
 }
+@mixin borderFull($opacity) {
+  border: solid;
+  border-width: 1px;
+  border-color: rgba(196, 161, 251, $opacity);
+  border-radius: 4px;
+}
 
 // color
 $font-color: #555;
