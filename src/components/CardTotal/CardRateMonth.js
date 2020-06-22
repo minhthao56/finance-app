@@ -1,7 +1,6 @@
 import React from "react";
 import "./CardTotal.scss";
 import "../../weather-icons/css/weather-icons.css";
-import { ChangeIconWeathe } from "../../Function/ChangeIconWeathe";
 export default function CardRateMonth() {
   //   const a = ChangeIconWeathe();
 
@@ -9,6 +8,7 @@ export default function CardRateMonth() {
     <div className="container-card-total">
       <div className="header-card-total">
         <h3>Rate Month</h3>
+        <i class="wi wi-day-sunny"></i>.
       </div>
       <div className="main-card-total">
         <div className="icon-card-total icon-card-month">
