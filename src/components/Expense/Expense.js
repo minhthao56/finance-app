@@ -34,7 +34,7 @@ export default function Expense() {
       <div className="header-expense">
         <div className="icons-header-expense">
           <div>
-            <i class="fas fa-money-bill-wave-alt"></i>
+            <i className="fas fa-money-bill-wave-alt"></i>
           </div>
           <h3>Expense</h3>
         </div>

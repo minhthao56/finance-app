@@ -1,3 +1,5 @@
+@import "../../CSSSRecylce/mixin.scss";
+
 .chart-line-home {
   width: 100%;
   border: solid;
@@ -11,17 +13,91 @@
 .total-line-chart {
   display: flex;
   align-items: center;
-  i {
-    margin-right: 20px;
-    font-size: 30px;
-    color: #fcb829;
-  }
+
   h3 {
     margin: 0;
     font-size: 22px;
   }
   span {
     font-size: 12px;
-    color: #aaaaaa;
+    color: rgba(196, 161, 251, 1);
   }
+  .coin {
+    background-color: rgba(196, 161, 251, 1);
+    font-size: 26px;
+    color: white;
+    height: 46px;
+    width: 46px;
+    border-radius: 43px;
+    @include displayFlex(center, row, center);
+    margin-right: 5px;
+  }
+}
+//
+.money-total {
+  display: flex;
+  align-items: center;
+  div {
+    color: rgba(196, 161, 251, 1);
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    background-color: rgb(250, 247, 255);
+    @include displayFlex(center, row, center);
+    transform: scale(1);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    &:hover {
+      background-color: rgb(239, 232, 252);
+      transform: scale(1.2);
+    }
+  }
+  input {
+    border: solid;
+    border: {
+      width: 1px;
+      radius: 3px;
+      color: rgba(196, 161, 251, 0.3);
+    }
+    background-color: white;
+    transition: all 0.3s;
+    &:hover {
+      background-color: rgb(247, 244, 253);
+    }
+    &:focus {
+      outline-color: rgba(196, 161, 251, 1);
+    }
+  }
+  button {
+    color: rgba(196, 161, 251, 1);
+    background-color: rgb(250, 247, 255);
+    border: none;
+    cursor: pointer;
+    height: 26px;
+    width: 26px;
+    margin-left: 2px;
+    border-radius: 3px;
+    font-size: 12px;
+    transform: scale(1);
+    transition: background-color 0.3s, transform 0.3s;
+    &:hover {
+      background-color: rgb(244, 236, 255);
+      transform: scale(1.2);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.display-add-money {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.4s;
+}
+.hidden-add-money {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
 }

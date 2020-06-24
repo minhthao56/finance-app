@@ -1,129 +1,108 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import Alert from "@material-ui/lab/Alert";
-import { Row, Col } from "antd";
+import { Row, Col, Alert } from "antd";
+import { Link, useHistory } from "react-router-dom";
+
 import "antd/dist/antd.css";
+import "../SignUp/SiguUp.scss";
 
 import ImageFinance from "../../images/finance.png";
-import WellCome from "../../images/Welcome.png";
-import "./SiguUp.scss";
+import Login from "../../images/Login.png";
+import ForgotPass from "./ForgotPass";
+
 export default function User() {
-  const [valueName, setValueName] = useState("");
+  const [mesErr, setMesErr] = useState("");
+  const [isErrLogin, setIsErrLogin] = useState(false);
+
   const [valueEmail, setValueEmail] = useState("");
   const [valuePassword, setValuePassword] = useState("");
+  const [isShowForgotPass, setIsShowForgotPass] = useState(false);
 
+  const [isShowErrCharacter, setIsShowErrCharacter] = useState(false);
   const [isErrEmail, setIsErrEmail] = useState(false);
-  const [isErrName, setIsErrName] = useState(false);
-  const [isErrPass, setIsErrPass] = useState(false);
-  const [msgErrEmail, setMsgErrEmail] = useState("");
-  const [msgErrName, setMsgErrName] = useState("");
-  const [msgErrPass, setMsgErrPass] = useState("");
 
-  const [isErrCreateUser, setIsErrCreateUser] = useState(false);
-
-  let history = useHistory();
-
+  const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
   const validationEmail = new RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
     "g"
   );
-  const validationName = new RegExp(
-    /[A-Z a-z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/,
-    "g"
-  );
-  const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
 
-  const handleChangeName = (event) => {
-    const value = event.target.value;
+  let history = useHistory();
 
-    setValueName(value);
-  };
+  // Handle mail
   const handleChangeEmail = (event) => {
     const value = event.target.value;
     setValueEmail(value);
   };
+  // Hanlde password
   const handleChangePasword = (event) => {
     const value = event.target.value;
     setValuePassword(value);
   };
 
+  // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validationEmail.test(valueEmail) === false) {
       setIsErrEmail(true);
-      setMsgErrEmail("Email Invaid");
-    } else if (validationName.test(valueName) === false) {
-      setIsErrName(true);
-      setMsgErrName("Name Inclue number and letter");
-    } else if (
-      valuePassword.length < 8 &&
-      validationCharacter.test(valuePassword)
-    ) {
-      setIsErrPass(true);
-      setMsgErrPass("Your password is at lest 8 characters");
+    } else if (validationCharacter.test(valuePassword) === false) {
+      setIsShowErrCharacter(true);
     } else {
       const user = {
-        name: valueName,
         email: valueEmail,
         password: valuePassword,
       };
 
       axios
-        .post("https://jdint.sse.codesandbox.io/users/signup", user)
+        .post("https://jdint.sse.codesandbox.io/users/login", user)
         .then((res) => {
-          setValueName("");
           setValueEmail("");
           setValuePassword("");
-          history.push("/user/login");
+          if (res.data.token) {
+            localStorage.setItem("token", res.data.token.toString());
+          }
+          history.push("/");
         })
         .catch((err) => {
           if (err.response === undefined) {
             console.log(err);
-          } else if (err.response.status === 400) {
-            setIsErrCreateUser(true);
-            console.log(err.response.data.msg);
+          } else if (err.response.status === 401) {
+            setIsErrLogin(true);
+            setMesErr(err.response.data.msg);
           }
         });
     }
   };
+  // handle Close Forgot Pass
+  const handleCloseForgotPass = () => {
+    setIsShowForgotPass(!isShowForgotPass);
+  };
+  // handle Show Forgot Pass
+  const handleShowForgotPass = () => {
+    setIsShowForgotPass(!isShowForgotPass);
+  };
   return (
     <div className="containe-signup">
       <Row className="row-signup">
-        <Col xs={0} sm={0} md={0} lg={12} xl={12}>
-          <div className="col1-signup">
-            <img src={WellCome} alt="" className="wellcome-signup" />
-          </div>
-        </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={12} className="col22-signup">
           <div className="col2-signup">
             <div className="contaiter-form">
               <div className="logo-signup">
-                <img src={ImageFinance} />
+                <img src={ImageFinance} alt="" />
                 <h1>money</h1>
               </div>
-              {isErrCreateUser === true ? (
-                <Alert severity="error">Email already exists</Alert>
+              {isErrLogin === true ? (
+                <Alert
+                  style={{ marginBottom: 10 }}
+                  message={mesErr}
+                  type="error"
+                  showIcon
+                />
               ) : null}
-
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                  {isErrName ? (
-                    <span className="msg-err">*{msgErrName}</span>
-                  ) : null}
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={valueName}
-                    onChange={handleChangeName}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  {isErrEmail ? (
-                    <span className="msg-err">*{msgErrEmail}</span>
+                  {isErrEmail === true ? (
+                    <span className="msg-err">*Don't try to hack email</span>
                   ) : null}
                   <input
                     type="email"
@@ -135,8 +114,8 @@ export default function User() {
                   />
                 </div>
                 <div className="form-group">
-                  {isErrPass ? (
-                    <span className="msg-err">*{msgErrPass}</span>
+                  {isShowErrCharacter === true ? (
+                    <span className="msg-err">*Don't try to hack password</span>
                   ) : null}
                   <input
                     type="password"
@@ -147,7 +126,12 @@ export default function User() {
                     required
                   />
                 </div>
-                <button type="submit">Sign up</button>
+                <button type="submit">Login</button>
+                <div className="forgot-pass">
+                  <span onClick={handleShowForgotPass}>
+                    I Forgot My Password
+                  </span>
+                </div>
               </form>
               <p className="policy">
                 By signing up, you agree to our{" "}
@@ -156,12 +140,20 @@ export default function User() {
             </div>
             <div className="have-account">
               <span>
-                Have an account?{" "}
-                <Link to="/user/login">
-                  <b>Log in</b>
+                Haven't an account?
+                <Link to="/user/signup">
+                  <b>Sign Up</b>
                 </Link>
               </span>
+              {isShowForgotPass ? (
+                <ForgotPass handleCloseForgotPass={handleCloseForgotPass} />
+              ) : null}
             </div>
+          </div>
+        </Col>
+        <Col xs={0} sm={0} md={0} lg={12} xl={12}>
+          <div className="col1-signup">
+            <img src={Login} alt="" className="wellcome-signup img-login" />
           </div>
         </Col>
       </Row>

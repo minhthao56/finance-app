@@ -5,11 +5,11 @@
 ::placeholder {
   color: $main-coler;
 }
-
 .logo-signup {
   font-family: "Merienda", cursive;
   display: flex;
   color: #1b1e4b;
+  margin-top: 10px;
   img {
     height: 60px;
     width: 60px;
@@ -21,6 +21,8 @@
 .containe-signup {
   display: flex;
   margin-top: 70px;
+  justify-content: center;
+  align-items: center;
   .welcome-signup {
     width: 500px;
   }
@@ -28,14 +30,27 @@
 .wellcome-signup {
   width: 100%;
 }
+.row-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .col1-signup {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.col22-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .col2-signup {
-  width: 55%;
-  margin-left: 50px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   .contaiter-form {
     @include displayFlex(center, column, center);
     border: solid;
@@ -85,6 +100,7 @@
       margin: auto;
       margin-bottom: 10px;
       transition: background-color 0.5s;
+      cursor: pointer;
       &:hover {
         background-color: rgb(234, 221, 255);
       }
@@ -101,14 +117,34 @@
 .have-account {
   @include displayFlex(center, column, center);
   border: solid;
+  width: 350px;
   border: {
     radius: 4px;
     color: rgba(196, 161, 251, 0.3);
     width: 1px;
   }
-  margin: 20px 0 20px 0;
+  margin: 10px 0 20px 0;
   padding: 20px 0 20px 0;
   b {
     color: $main-coler;
+  }
+}
+// login
+
+.img-login {
+  width: 80%;
+}
+.forgot-pass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 15px;
+  color: $main-coler;
+  font-weight: 400;
+  transition: font-weight 0.1s;
+  &:hover {
+    font-weight: 700;
+    text-decoration: underline;
   }
 }

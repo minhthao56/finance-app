@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 import "./Chart.scss";
 export default function LineChart() {
   const [dataChart, setDataChart] = useState({});
+  const [isShowAddMoney, SetIsShowAddMoney] = useState(false);
+  const [moneyAdd, setMoneyAdd] = useState("");
+  const CheckLogin = useSelector((state) => state.CheckLogin);
+
   const dataChartLine = () => {
     setDataChart({
       labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -11,16 +17,6 @@ export default function LineChart() {
         {
           label: "Epense",
           data: [1, 2, 5, 6, 7, 8, 10],
-          borderColor: "rgba(87, 117, 145, 1)",
-          borderWidth: 2,
-          fill: false,
-          lineTension: 0.4,
-          pointBackgroundColor: "rgba(0,0,0,0)",
-          pointBorderColor: "rgba(0,0,0,0)",
-        },
-        {
-          label: "Icome",
-          data: [1, 4, 6, 6, 9, 10, 14],
           borderColor: "rgba(196, 161, 251, 1)",
           borderWidth: 2,
           fill: false,
@@ -34,13 +30,63 @@ export default function LineChart() {
   useEffect(() => {
     dataChartLine();
   }, []);
+  // handle Show Add Money
+  const handleShowAddMoney = () => {
+    SetIsShowAddMoney(!isShowAddMoney);
+  };
+  // handle Value Add Money
+  const hanleVulueMoney = (e) => {
+    const value = e.target.value;
+    setMoneyAdd(value);
+  };
+  // handle Sub Add Money
+  const handleSubAddMoney = (e) => {
+    e.preventDefault();
+    const inFoMoney = {
+      amount: moneyAdd,
+      idUser: CheckLogin.data._id,
+    };
+    axios
+      .post("https://jdint.sse.codesandbox.io/finance/income", inFoMoney)
+      .then((res) => {
+        console.log(res.data);
+        setMoneyAdd("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="chart-line-home">
       <div className="total-line-chart">
-        <i className="fas fa-coins"></i>
+        <div className="coin">
+          <i className="fas fa-coins"></i>
+        </div>
         <div className="total">
-          <h3>$12440.0</h3>
-          <span>TOTAL REVENUE OF THIS MONTH</span>
+          <div className="money-total">
+            <h3>$12440.0</h3>
+            <div onClick={handleShowAddMoney}>
+              <i className="fas fa-plus"></i>
+            </div>
+            <form
+              onSubmit={handleSubAddMoney}
+              className={
+                isShowAddMoney ? "display-add-money" : "hidden-add-money"
+              }
+            >
+              <input
+                type="text"
+                placeholder="Money"
+                onChange={hanleVulueMoney}
+                value={moneyAdd}
+              />
+              <button type="submit">
+                <i className="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+          <span>TOTAL EXPENSE OF THIS MONTH</span>
         </div>
       </div>
       <Line

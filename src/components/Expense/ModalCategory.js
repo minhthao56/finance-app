@@ -249,7 +249,7 @@ export default function ModalCategory(props) {
               <div className="category-icon ">
                 <label>
                   <div className="icon category-color5">
-                    <i class="fas fa-faucet"></i>
+                    <i className="fas fa-faucet"></i>
                   </div>
                   Water
                   <input
@@ -413,7 +413,7 @@ export default function ModalCategory(props) {
               <div className="category-icon">
                 <label>
                   <div className="icon category-color1">
-                    <i class="fas fa-prescription-bottle"></i>
+                    <i className="fas fa-prescription-bottle"></i>
                   </div>
                   Baby Supplies
                   <input
@@ -441,7 +441,7 @@ export default function ModalCategory(props) {
               <div className="category-icon ">
                 <label>
                   <div className="icon category-color3">
-                    <i class="fas fa-book-reader"></i>
+                    <i className="fas fa-book-reader"></i>
                   </div>
                   Books
                   <input
@@ -563,7 +563,7 @@ export default function ModalCategory(props) {
               <div className="category-icon">
                 <label>
                   <div className="icon category-color1">
-                    <i class="fas fa-hand-holding-heart"></i>
+                    <i className="fas fa-hand-holding-heart"></i>
                   </div>
                   Charity
                   <input
