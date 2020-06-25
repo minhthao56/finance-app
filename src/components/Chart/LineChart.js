@@ -9,6 +9,7 @@ export default function LineChart() {
   const [isShowAddMoney, SetIsShowAddMoney] = useState(false);
   const [moneyAdd, setMoneyAdd] = useState("");
   const CheckLogin = useSelector((state) => state.CheckLogin);
+  const Balance = useSelector((state) => state.Balance);
 
   const dataChartLine = () => {
     setDataChart({
@@ -27,6 +28,7 @@ export default function LineChart() {
       ],
     });
   };
+
   useEffect(() => {
     dataChartLine();
   }, []);
@@ -65,7 +67,7 @@ export default function LineChart() {
         </div>
         <div className="total">
           <div className="money-total">
-            <h3>$12440.0</h3>
+            <h3>$ {Balance}</h3>
             <div onClick={handleShowAddMoney}>
               <i className="fas fa-plus"></i>
             </div>

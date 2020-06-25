@@ -17,6 +17,7 @@ import CardWeatherMini from "../CardTotal/CardWeatherMini";
 import ChartDoughnut from "../Chart/ChartDoughnut";
 
 export default function Home() {
+  const [dataFinance, setDataFinance] = useState();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const checkLogined = () => {
@@ -27,12 +28,28 @@ export default function Home() {
           type: "CHECK_LOGGED",
           data: res.data,
         });
+        setDataFinance(res.data);
+        fetchDataBalance(res.data._id);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const fetchDataBalance = (id) => {
+    const _id = dataFinance && dataFinance._id;
+    axios
+      .get("https://jdint.sse.codesandbox.io/finance/balance/" + id || _id)
+      .then((res) => {
+        dispatch({
+          type: "BALANCE",
+          data: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     checkLogined();
   }, []);
