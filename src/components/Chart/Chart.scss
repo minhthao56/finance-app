@@ -13,6 +13,7 @@
 .total-line-chart {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 
   h3 {
     margin: 0;
@@ -30,17 +31,18 @@
     width: 46px;
     border-radius: 43px;
     @include displayFlex(center, row, center);
-    margin-right: 5px;
+    margin-right: 10px;
   }
 }
 //
 .money-total {
   display: flex;
   align-items: center;
+  margin-bottom: 2px;
   div {
     color: rgba(196, 161, 251, 1);
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 7px;
+    margin-right: 7px;
     height: 24px;
     width: 24px;
     border-radius: 100%;
@@ -100,4 +102,51 @@
   visibility: hidden;
   opacity: 0;
   transition: all 0.4s;
+}
+// Dought chart
+.container-doughnut {
+  @include borderFull(0.3);
+  padding: 10px;
+  margin-top: 20px;
+}
+.main-chart-doughnut {
+  display: grid;
+  grid-template-columns: 25% 65%;
+}
+///@
+.detail-chart-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    margin-right: 5px;
+    font-size: 11px;
+    color: #aaaaaa;
+    font-weight: 500;
+  }
+}
+.action-chart-line {
+  margin-left: auto;
+  button {
+    margin-right: 5px;
+    border: none;
+    background-color: white;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.1s;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  #bt-color-btom {
+    border-bottom: solid;
+    height: 56px;
+    color: rgba(196, 161, 251, 1);
+  }
 }

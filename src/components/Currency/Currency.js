@@ -46,7 +46,17 @@ export default function Currency() {
             <b>VND</b>{" "}
           </span>
           <span style={{ color: "#aaaaaa" }}>1 EUR = {VND} ₫</span>
-          <img src={VN} alt="" />
+          {/* <img src={VN} alt="" /> */}
+          <div
+            style={{
+              backgroundImage: `url(${VN})`,
+              width: 32,
+              height: 32,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              borderRadius: 100,
+            }}
+          ></div>
         </div>
         <div className="main-currency">
           <span>

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Expense() {
+export default function Expense(props) {
   const [expanded, setExpanded] = useState(false);
   const [valueAmount, setValueAmount] = useState("");
   const [valuaDes, setValuaDes] = useState("");
@@ -31,6 +31,7 @@ export default function Expense() {
   const formatNow = moment(now).format("YYYY-MM-DDThh:mm");
   const [valueDate, setValueDate] = useState(formatNow);
 
+  const { fetchDataBalance } = props;
   // Open and close category
   const hanleOpenCategory = () => {
     setExpanded(!expanded);
@@ -70,6 +71,7 @@ export default function Expense() {
       .post("https://jdint.sse.codesandbox.io/finance/expense", inFoExpense)
       .then((res) => {
         console.log(res.data);
+        return fetchDataBalance();
       })
       .catch((err) => {
         console.log(err);

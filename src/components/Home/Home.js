@@ -18,9 +18,15 @@ import ChartDoughnut from "../Chart/ChartDoughnut";
 
 export default function Home() {
   const [dataFinance, setDataFinance] = useState();
+  const [dataExpense, setDataExpense] = useState([]);
+  const [datatDataDoughnut, setDatatDataDoughnut] = useState([]);
+  const [dataChatLine, setDataChartLine] = useState([]);
+  const [dataChartBar, setDataChartBar] = useState([]);
   const dispatch = useDispatch();
-  const token = localStorage.getItem("token");
+
+  //  check login
   const checkLogined = () => {
+    const token = localStorage.getItem("token");
     axios
       .post("https://jdint.sse.codesandbox.io/users/checklogin", { token })
       .then((res) => {
@@ -30,16 +36,24 @@ export default function Home() {
         });
         setDataFinance(res.data);
         fetchDataBalance(res.data._id);
+        fetchDataFetchExpense(res.data._id);
+        fetchDataChartDoughnut(res.data._id);
+        fetchDataChartLine(res.data._id);
+        fetchDataChartBar(res.data._id);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+  // balance
   const fetchDataBalance = (id) => {
     const _id = dataFinance && dataFinance._id;
     axios
-      .get("https://jdint.sse.codesandbox.io/finance/balance/" + id || _id)
+      .get(
+        id
+          ? "https://jdint.sse.codesandbox.io/finance/balance/" + id
+          : "https://jdint.sse.codesandbox.io/finance/balance/" + _id
+      )
       .then((res) => {
         dispatch({
           type: "BALANCE",
@@ -50,6 +64,73 @@ export default function Home() {
         console.log(err);
       });
   };
+
+  // get expense
+  const fetchDataFetchExpense = (id) => {
+    const _id = dataFinance && dataFinance._id;
+    axios
+      .get(
+        id
+          ? "https://jdint.sse.codesandbox.io/finance/get/expense/" + id
+          : "https://jdint.sse.codesandbox.io/finance/get/expense/" + _id
+      )
+      .then((res) => {
+        setDataExpense(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // get data doughnut
+  const fetchDataChartDoughnut = (id) => {
+    const _id = dataFinance && dataFinance._id;
+    axios
+      .get(
+        id
+          ? "https://jdint.sse.codesandbox.io/finance/get/doughnut/" + id
+          : "https://jdint.sse.codesandbox.io/finance/get/doughnut/" + _id
+      )
+      .then((res) => {
+        setDatatDataDoughnut(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // get dataChatLine
+  const fetchDataChartLine = (id) => {
+    const _id = dataFinance && dataFinance._id;
+    axios
+      .get(
+        id
+          ? "https://jdint.sse.codesandbox.io/finance/get/chartline/" + id
+          : "https://jdint.sse.codesandbox.io/finance/get/chartline/" + _id
+      )
+      .then((res) => {
+        setDataChartLine(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // get dataChat Bar
+  const fetchDataChartBar = (id) => {
+    const _id = dataFinance && dataFinance._id;
+    axios
+      .get(
+        id
+          ? "https://jdint.sse.codesandbox.io/finance/get/charbar/" + id
+          : "https://jdint.sse.codesandbox.io/finance/get/charbar/" + _id
+      )
+      .then((res) => {
+        setDataChartBar(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     checkLogined();
   }, []);
@@ -60,7 +141,7 @@ export default function Home() {
       </div>
       <div className="container-home">
         <h2>Home</h2>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[16, 32]}>
           <Col span={6}>
             <CardTotal />
           </Col>
@@ -74,15 +155,19 @@ export default function Home() {
             <CardWeatherMini />
           </Col>
         </Row>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[16, 32]}>
           <Col span={14} id="col1-home">
-            <ChartLine />
-            <ChartDoughnut />
+            <ChartLine
+              dataDataChatLine={dataChatLine}
+              dataDataChartBar={dataChartBar}
+            />
+            <ChartDoughnut datatDataDoughnut={datatDataDoughnut} />
           </Col>
           <Col span={10}>
             <Currency />
-            <Expense />
-            <CardEpense />
+            <Expense fetchDataBalance={fetchDataBalance} />
+
+            <CardEpense dataExpense={dataExpense} />
           </Col>
         </Row>
       </div>

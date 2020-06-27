@@ -6,13 +6,12 @@ nav {
     color: rgba(196, 161, 251, 0.3);
   }
   margin-bottom: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   .container-nav {
     display: flex;
     align-items: center;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 70px;
+    margin-right: 70px;
   }
   .link-nav {
     color: $main-coler;
@@ -20,7 +19,35 @@ nav {
 }
 .logo-nav {
   margin-right: auto;
+
   h1 {
-    font-size: 24px;
+    font-size: 20px;
+    margin: 0;
+  }
+}
+#logo-nav {
+  width: 42px;
+  height: 42px;
+}
+.container-link-nav {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+
+  .container-profile {
+    display: flex;
+    align-items: center;
+    border-left: solid;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-width: 1px;
+    .avatar-nav {
+      height: 32px;
+      width: 32px;
+      border-radius: 32px;
+      background-position: center;
+      background-size: cover;
+      margin-right: 5px;
+    }
   }
 }

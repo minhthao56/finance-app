@@ -1,10 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import Moment from "react-moment";
 
 import "./CardEpense.scss";
 
-export default function CardEpense() {
-  const Category = useSelector((state) => state.Category);
+import HistortyADay from "./HistortyADay";
+
+export default function CardEpense(props) {
+  const { dataExpense } = props;
   return (
     <div className="container-card-expendse">
       <div className="icon-hearder-card-expense">
@@ -13,31 +15,30 @@ export default function CardEpense() {
         </div>
         <h3>History</h3>
       </div>
-      <div className="time-expense">
-        <div className="main-time-expense">
-          <span id="date-main">22</span>
-          <div className="sub-time">
-            <span>Today</span>
-            <span>06/2020</span>
-          </div>
-        </div>
-        <span>64$</span>
-      </div>
-      <div>
-        {Category.length ? (
-          <div className="container-price-card">
-            <div className="category-icon category-expense-icon icon-card-expense">
-              <div className={"icon category-color" + Category[1]}>
-                <i className={Category[2]}></i>
+      {dataExpense.map((data) => {
+        return (
+          <div className="container-time-expense">
+            <div className="time-expense">
+              <div className="main-time-expense">
+                <span id="date-main">
+                  <Moment format="DD">{data.time}</Moment>
+                </span>
+                <div className="sub-time">
+                  <span>
+                    <Moment calendar>{data.time}</Moment>
+                  </span>
+                  <span>
+                    {" "}
+                    <Moment format="MM/YYYY">{data.time}</Moment>
+                  </span>
+                </div>
               </div>
-              <span>{Category[0]}</span>
+              <span>64$</span>
             </div>
-            <span>64$</span>
+            <HistortyADay data={data.data} />;
           </div>
-        ) : (
-          <span>Nothing</span>
-        )}
-      </div>
+        );
+      })}
     </div>
   );
 }

@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Progress } from "antd";
 
 import "./Chart.scss";
-export default function LineChart() {
+export default function LineChart(props) {
   const [dataChart, setDataChart] = useState({});
+  const [dataChartBar, setDataChartBar] = useState({});
   const [isShowAddMoney, SetIsShowAddMoney] = useState(false);
   const [moneyAdd, setMoneyAdd] = useState("");
+  const [isShowChartLine, setIsShowChartLine] = useState(true);
+
   const CheckLogin = useSelector((state) => state.CheckLogin);
   const Balance = useSelector((state) => state.Balance);
+  const { dataDataChatLine, dataDataChartBar } = props;
 
   const dataChartLine = () => {
     setDataChart({
       labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       datasets: [
         {
-          label: "Epense",
-          data: [1, 2, 5, 6, 7, 8, 10],
+          label: "Expense",
+          data: dataDataChatLine,
           borderColor: "rgba(196, 161, 251, 1)",
           borderWidth: 2,
           fill: false,
@@ -28,10 +33,40 @@ export default function LineChart() {
       ],
     });
   };
+  const handleDataChartBar = () => {
+    setDataChartBar({
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+      datasets: [
+        {
+          label: "Expense",
+          data: dataDataChartBar,
+          backgroundColor: "rgba(196, 161, 251, 1)",
+          barPercentage: 0.5,
+          barThickness: 6,
+          maxBarThickness: 8,
+          minBarLength: 2,
+        },
+      ],
+    });
+  };
 
   useEffect(() => {
     dataChartLine();
-  }, []);
+    handleDataChartBar();
+  }, [dataDataChatLine, dataDataChartBar]);
   // handle Show Add Money
   const handleShowAddMoney = () => {
     SetIsShowAddMoney(!isShowAddMoney);
@@ -58,7 +93,12 @@ export default function LineChart() {
         console.log(err);
       });
   };
-
+  const hanldeShowChartLine = () => {
+    setIsShowChartLine(true);
+  };
+  const hanldeShowChartBar = () => {
+    setIsShowChartLine(false);
+  };
   return (
     <div className="chart-line-home">
       <div className="total-line-chart">
@@ -88,51 +128,125 @@ export default function LineChart() {
               </button>
             </form>
           </div>
-          <span>TOTAL EXPENSE OF THIS MONTH</span>
+          <span>TOTAL EXPENSE OF THIS WEEK AND MONTH </span>
+        </div>
+        <div className="action-chart-line">
+          <button
+            id={isShowChartLine ? "bt-color-btom" : null}
+            onClick={hanldeShowChartLine}
+          >
+            This Week
+          </button>
+          <button
+            id={isShowChartLine ? null : "bt-color-btom"}
+            onClick={hanldeShowChartBar}
+          >
+            This Month
+          </button>
         </div>
       </div>
-      <Line
-        data={dataChart}
-        options={{
-          responsive: true,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 5,
-                  beginAtZero: true,
-                  fontColor: "#aaa",
+      {isShowChartLine ? (
+        <Line
+          data={dataChart}
+          options={{
+            responsive: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    beginAtZero: true,
+                    fontColor: "#cccccc",
+                    fontSize: 11,
+                    fontStyle: "bold",
+                  },
+                  gridLines: {
+                    display: true,
+                    color: "rgba(225, 225, 225, 0.3)",
+                    drawTicks: true,
+                    zeroLineColor: "rgba(200, 200, 200, 0.5)",
+                    borderDash: [5, 10],
+                  },
                 },
-                gridLines: {
-                  display: true,
-                  color: "rgba(225, 225, 225, 0.2)",
-                  drawTicks: true,
-                  zeroLineColor: "rgba(200, 200, 200, 0.5)",
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false,
+                  },
+                  ticks: {
+                    fontColor: "#cccccc",
+                    fontSize: 11,
+                    fontStyle: "bold",
+                  },
                 },
-              },
-            ],
-            xAxes: [
-              {
-                gridLines: {
-                  display: false,
-                },
-                ticks: {
-                  fontColor: "#aaa",
-                },
-              },
-            ],
-          },
-          legend: {
-            display: true,
-            position: "bottom",
-            labels: {
-              fontColor: "#aaa",
-              fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+              ],
             },
-          },
-        }}
-      />
+            legend: {
+              display: false,
+            },
+          }}
+        />
+      ) : (
+        <Bar
+          data={dataChartBar}
+          options={{
+            responsive: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    beginAtZero: true,
+                    fontColor: "#cccccc",
+                    fontSize: 11,
+                    fontStyle: "bold",
+                  },
+                  gridLines: {
+                    display: true,
+                    color: "rgba(225, 225, 225, 0.3)",
+                    drawTicks: true,
+                    zeroLineColor: "rgba(200, 200, 200, 0.5)",
+                    borderDash: [5, 10],
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false,
+                  },
+                  ticks: {
+                    fontColor: "#cccccc",
+                    fontSize: 11,
+                    fontStyle: "bold",
+                  },
+                },
+              ],
+            },
+            legend: {
+              display: false,
+              position: "bottom",
+              labels: {
+                fontColor: "#aaa",
+                fontFamily:
+                  "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+              },
+            },
+          }}
+        />
+      )}
+      <div className="detail-chart-line">
+        <span>Expense</span>
+        <Progress
+          percent={100}
+          showInfo={false}
+          size="small"
+          strokeColor="#C4A1FB"
+          strokeWidth={3}
+          style={{ width: 100 }}
+        />
+      </div>
     </div>
   );
 }

@@ -1,11 +1,15 @@
 @import "../../CSSSRecylce/mixin.scss";
 
 .container-card-total {
-  @include borderFull(0.3);
+  @include borderFull(0);
   padding: 10px 20px 10px 20px;
   transform: scale(1);
   transition: transform 0.2s;
-
+  color: white;
+  background-color: #c4a1fb;
+  h3 {
+    color: white;
+  }
   .main-card-total {
     display: flex;
     align-items: center;
@@ -23,15 +27,16 @@
   }
 }
 .money-sub-card {
-  background-color: #a2bcc9;
   padding: 5px 10px 5px 10px;
   border-radius: 20px;
   margin-top: 5px;
   color: white;
+  border: solid;
+  border-width: 1px;
+  border-color: white;
 }
 .icon-card-total {
   margin-right: auto;
-  background-color: #264653;
   color: white;
   height: 34px;
   width: 34px;
@@ -40,18 +45,14 @@
   justify-content: center;
   align-items: center;
   font-size: 18px;
+  border: solid;
+  border-width: 1px;
+  border-color: white;
 }
-// Card rate week
-.icon-rate-week {
-  background-color: #2a9d8f;
+////
+.card-week {
+  background-color: rgb(253, 60, 151);
 }
-.money-sub-week {
-  background-color: #6ccabf;
-}
-// card rate month
-.icon-card-month {
-  background-color: #e9c46a;
-}
-.money-sub-month {
-  background-color: #f3e2b6;
+.card-month {
+  background-color: rgb(27, 203, 183);
 }
