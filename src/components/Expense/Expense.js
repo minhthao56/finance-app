@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
-import TextField from "@material-ui/core/TextField";
-import moment from "moment";
-import { useSelector } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { KeyboardDateTimePicker } from "@material-ui/pickers";
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
+import { deepPurple, grey } from "@material-ui/core/colors";
 
 import { Lottie } from "@crello/react-lottie";
 import animationData from "../../images/wallet-icon.json";
@@ -11,27 +12,30 @@ import animationData from "../../images/wallet-icon.json";
 import "./Expense.scss";
 import ModalCategory from "./ModalCategory";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    width: 425,
-  },
-}));
-
 export default function Expense(props) {
   const [expanded, setExpanded] = useState(false);
   const [valueAmount, setValueAmount] = useState("");
   const [valuaDes, setValuaDes] = useState("");
-
-  const classes = useStyles();
+  const [isShowErr, setIsShowErr] = useState(false);
+  const [isShowErrSelect, setIsShowErrSelect] = useState(false);
 
   const Category = useSelector((state) => state.Category);
+  const Balance = useSelector((state) => state.Balance);
+
   const CheckLogin = useSelector((state) => state.CheckLogin);
+  const dispatch = useDispatch();
 
   const now = new Date();
-  const formatNow = moment(now).format("YYYY-MM-DDThh:mm");
-  const [valueDate, setValueDate] = useState(formatNow);
+  const [selectedDate, SetSelectedDate] = useState(now);
 
-  const { fetchDataBalance } = props;
+  const {
+    fetchDataBalance,
+    fetchDataChartLine,
+    fetchDataChartDoughnut,
+    fetchDataFetchExpense,
+  } = props;
+  const url = "https://pks85.sse.codesandbox.io/";
+  const regex = new RegExp("^[0-9]+$");
   // Open and close category
   const hanleOpenCategory = () => {
     setExpanded(!expanded);
@@ -50,9 +54,9 @@ export default function Expense(props) {
     setValuaDes(value);
   };
   // value Date
-  const handleValueDate = (event) => {
+  const handleDateChange = (event) => {
     const value = event.target.value;
-    setValueDate(value);
+    SetSelectedDate(value);
   };
   // handle Submit Expense
   const handleSubmitExpense = (event) => {
@@ -61,22 +65,63 @@ export default function Expense(props) {
     const inFoExpense = {
       des: valuaDes,
       amount: valueAmount,
-      time: valueDate,
+      time: selectedDate,
       title: Category[0],
       color: Category[1],
       className: Category[2],
       idUser: CheckLogin.data._id,
     };
-    axios
-      .post("https://jdint.sse.codesandbox.io/finance/expense", inFoExpense)
-      .then((res) => {
-        console.log(res.data);
-        return fetchDataBalance();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (regex.test(valueAmount) === false) {
+      setIsShowErr(true);
+    } else if (Category.length === 0) {
+      setIsShowErrSelect(true);
+    } else {
+      setIsShowErr(false);
+      setIsShowErrSelect(false);
+      axios
+        .post(url + "finance/expense", inFoExpense)
+        .then((res) => {
+          setValueAmount("");
+          setValuaDes("");
+          dispatch({
+            type: "DELETE_CATEGORY",
+          });
+
+          return fetchDataBalance();
+        })
+        .then(() => {
+          return fetchDataChartLine();
+        })
+        .then(() => {
+          return fetchDataChartDoughnut();
+        })
+        .then(() => {
+          return fetchDataFetchExpense();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
+  const materialTheme = createMuiTheme({
+    palette: {
+      primary: {
+        main: deepPurple[100],
+      },
+      text: {
+        primary: "rgba(0, 0, 0, 0.4)",
+      },
+      type: "light",
+    },
+    overrides: {
+      MuiPickersToolbar: {
+        toolbar: {
+          backgroundColor: grey,
+        },
+      },
+    },
+  });
+
   return (
     <div className="container-form-expense">
       <div className="header-expense">
@@ -88,15 +133,20 @@ export default function Expense(props) {
         </div>
       </div>
       <form onSubmit={handleSubmitExpense}>
+        {isShowErr ? <span className="err-input">*Only number</span> : null}
         <div className="expense amount-expense">
           <input
             type="text"
             placeholder="0"
             value={valueAmount}
             onChange={hanldeValueAmount}
+            required
           />
-          <span>$</span>
+          <b>$</b>
         </div>
+        {isShowErrSelect ? (
+          <span className="err-input">*Let select one</span>
+        ) : null}
         <div className="expense category-expense">
           <i
             className="fas fa-question-circle question-circle"
@@ -111,13 +161,13 @@ export default function Expense(props) {
               <span>{Category[0]}</span>
             </div>
           ) : (
-            <span>Select category</span>
+            <span onClick={hanleOpenCategory}>Select category</span>
           )}
           {expanded ? (
             <ModalCategory hanleCloseCategory={hanleCloseCategory} />
           ) : null}
         </div>
-        <div className="expense description-expense">
+        <div className="expense " id="description-expense">
           <i className="fas fa-bars"></i>
           <input
             type="text"
@@ -127,19 +177,25 @@ export default function Expense(props) {
           />
         </div>
         <div className="expense date-expense">
-          <TextField
-            id="datetime-local"
-            type="datetime-local"
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={valueDate}
-            onChange={handleValueDate}
-          />
+          <ThemeProvider theme={materialTheme}>
+            <KeyboardDateTimePicker
+              variant="inline"
+              value={selectedDate}
+              onChange={handleDateChange}
+              onError={console.log}
+              format="MM/DD/YYYY, h:mm:ss a"
+              style={{ width: "100%" }}
+              required
+            />
+          </ThemeProvider>
         </div>
         <div className="expense wallet-expense">
-          <Lottie config={{ animationData: animationData, loop: true }} />
+          <div style={{ height: 38, width: 38 }}>
+            <Lottie config={{ animationData: animationData, loop: true }} />
+          </div>
+          <span>
+            Total your wallet now: <b>{Balance}$</b>
+          </span>
         </div>
         <div className="bt-expense">
           <button type="submit">Save</button>

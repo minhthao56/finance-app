@@ -70,21 +70,54 @@ export default function ChartDoughnut(props) {
   }, [datatDataDoughnut]);
   return (
     <div className="container-doughnut">
+      <div className="conainter-icon-doughnut">
+        <div className="icon-doughnut">
+          <svg
+            width="1.5em"
+            height="1.5em"
+            viewBox="0 0 16 16"
+            className="bi bi-wallet2"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M2.5 4l10-3A1.5 1.5 0 0 1 14 2.5v2h-1v-2a.5.5 0 0 0-.5-.5L5.833 4H2.5z" />
+            <path
+              fill-rule="evenodd"
+              d="M1 5.5A1.5 1.5 0 0 1 2.5 4h11A1.5 1.5 0 0 1 15 5.5v8a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5v-8zM2.5 5a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-11z"
+            />
+          </svg>
+        </div>
+        <div className="total-exprense-doughnut">
+          <span>
+            <em>Total exprense</em>
+          </span>
+          <h3>1000$</h3>
+        </div>
+      </div>
+
       <div className="main-chart-doughnut">
-        <div style={{ width: 300 }}>
-          {percentAndColorChart.map((data) => {
-            return (
-              <div className="detail-dought">
-                <span>{data.title}</span>
-                <Progress
-                  percent={data.percent}
-                  strokeColor={data.strokeColor}
-                  size="small"
-                  strokeWidth={3}
-                />
-              </div>
-            );
-          })}
+        <div>
+          <div className="header-detail-total-expens">
+            <div>
+              <i class="fas fa-list"></i>
+            </div>
+            <em>Detail expense</em>
+          </div>
+          <div className="main-detail-donghnut">
+            {percentAndColorChart.map((data) => {
+              return (
+                <div className="detail-dought">
+                  <span id="title-percent">{data.title}</span>
+                  <Progress
+                    percent={data.percent}
+                    strokeColor={data.strokeColor}
+                    size="small"
+                    strokeWidth={5}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <Doughnut

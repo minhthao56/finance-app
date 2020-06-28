@@ -17,12 +17,6 @@ export default function Nav() {
           <h1>money</h1>
         </div>
         <div className="container-link-nav">
-          <Switch defaultChecked size="small" />
-          <div>
-            <i className={"wi wi-owm-800"}></i>
-            <span>25</span> <i className="wi wi-celsius"></i>
-          </div>
-
           <Link className="link-nav" to="/">
             Home
           </Link>
@@ -39,6 +33,19 @@ export default function Nav() {
               <span>{CheckLogin.data && CheckLogin.data.name} / Sigu Out</span>
             </div>
           </Link>
+          <div className="weather-nav">
+            <i className="wi wi-owm-800" id="icon-weather-nav"></i>
+            <span>25</span>{" "}
+            <i className="wi wi-celsius" id="icon-celsius-nav"></i>
+          </div>
+          <div>
+            <input type="checkbox" className="checkbox" id="chk" />
+            <label className="label" for="chk">
+              <i className="fas fa-moon"></i>
+              <i className="fas fa-sun"></i>
+              <div className="ball"></div>
+            </label>
+          </div>
         </div>
       </div>
     </nav>

@@ -21,9 +21,9 @@ export default function User() {
   const [isShowErrCharacter, setIsShowErrCharacter] = useState(false);
   const [isErrEmail, setIsErrEmail] = useState(false);
 
-  const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
+  const validationCharacter = new RegExp("^[a-zA-Z0-9!@#$%^&*()_+]+$", "g");
   const validationEmail = new RegExp(
-    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+    '^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$',
     "g"
   );
 
@@ -54,7 +54,7 @@ export default function User() {
       };
 
       axios
-        .post("https://jdint.sse.codesandbox.io/users/login", user)
+        .post("https://pks85.sse.codesandbox.io/users/login", user)
         .then((res) => {
           setValueEmail("");
           setValuePassword("");

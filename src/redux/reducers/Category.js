@@ -7,6 +7,8 @@ const myReducer = (state = initialState, action) => {
     case types.CHOOSE_CATEGORY:
       const arrCategory = action.choose.split(",");
       return arrCategory;
+    case types.DELETE_CATEGORY:
+      return [];
     default:
       return state;
   }

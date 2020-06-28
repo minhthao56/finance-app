@@ -23,12 +23,13 @@ export default function Home() {
   const [dataChatLine, setDataChartLine] = useState([]);
   const [dataChartBar, setDataChartBar] = useState([]);
   const dispatch = useDispatch();
+  const url = "https://pks85.sse.codesandbox.io/";
 
   //  check login
   const checkLogined = () => {
     const token = localStorage.getItem("token");
     axios
-      .post("https://jdint.sse.codesandbox.io/users/checklogin", { token })
+      .post(url + "users/checklogin", { token })
       .then((res) => {
         dispatch({
           type: "CHECK_LOGGED",
@@ -48,12 +49,9 @@ export default function Home() {
   // balance
   const fetchDataBalance = (id) => {
     const _id = dataFinance && dataFinance._id;
+
     axios
-      .get(
-        id
-          ? "https://jdint.sse.codesandbox.io/finance/balance/" + id
-          : "https://jdint.sse.codesandbox.io/finance/balance/" + _id
-      )
+      .get(id ? url + "finance/balance/" + id : url + "finance/balance/" + _id)
       .then((res) => {
         dispatch({
           type: "BALANCE",
@@ -71,8 +69,8 @@ export default function Home() {
     axios
       .get(
         id
-          ? "https://jdint.sse.codesandbox.io/finance/get/expense/" + id
-          : "https://jdint.sse.codesandbox.io/finance/get/expense/" + _id
+          ? url + "finance/get/expense/" + id
+          : url + "finance/get/expense/" + _id
       )
       .then((res) => {
         setDataExpense(res.data);
@@ -88,8 +86,8 @@ export default function Home() {
     axios
       .get(
         id
-          ? "https://jdint.sse.codesandbox.io/finance/get/doughnut/" + id
-          : "https://jdint.sse.codesandbox.io/finance/get/doughnut/" + _id
+          ? url + "finance/get/doughnut/" + id
+          : url + "finance/get/doughnut/" + _id
       )
       .then((res) => {
         setDatatDataDoughnut(res.data);
@@ -104,8 +102,8 @@ export default function Home() {
     axios
       .get(
         id
-          ? "https://jdint.sse.codesandbox.io/finance/get/chartline/" + id
-          : "https://jdint.sse.codesandbox.io/finance/get/chartline/" + _id
+          ? url + "finance/get/chartline/" + id
+          : url + "finance/get/chartline/" + _id
       )
       .then((res) => {
         setDataChartLine(res.data);
@@ -120,8 +118,8 @@ export default function Home() {
     axios
       .get(
         id
-          ? "https://jdint.sse.codesandbox.io/finance/get/charbar/" + id
-          : "https://jdint.sse.codesandbox.io/finance/get/charbar/" + _id
+          ? url + "finance/get/charbar/" + id
+          : url + "finance/get/charbar/" + _id
       )
       .then((res) => {
         setDataChartBar(res.data);
@@ -135,7 +133,7 @@ export default function Home() {
     checkLogined();
   }, []);
   return (
-    <div>
+    <div className="dark">
       <div>
         <Nav />
       </div>
@@ -165,7 +163,12 @@ export default function Home() {
           </Col>
           <Col span={10}>
             <Currency />
-            <Expense fetchDataBalance={fetchDataBalance} />
+            <Expense
+              fetchDataBalance={fetchDataBalance}
+              fetchDataFetchExpense={fetchDataFetchExpense}
+              fetchDataChartDoughnut={fetchDataChartDoughnut}
+              fetchDataChartLine={fetchDataChartLine}
+            />
 
             <CardEpense dataExpense={dataExpense} />
           </Col>

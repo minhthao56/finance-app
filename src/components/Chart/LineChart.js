@@ -106,6 +106,7 @@ export default function LineChart(props) {
           <i className="fas fa-coins"></i>
         </div>
         <div className="total">
+          <em>Your Balance</em>
           <div className="money-total">
             <h3>$ {Balance}</h3>
             <div onClick={handleShowAddMoney}>

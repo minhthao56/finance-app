@@ -106,7 +106,7 @@
 // Dought chart
 .container-doughnut {
   @include borderFull(0.3);
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
   margin-top: 20px;
 }
 .main-chart-doughnut {
@@ -149,4 +149,65 @@
     height: 56px;
     color: rgba(196, 161, 251, 1);
   }
+}
+// bi-wallet2
+.conainter-icon-doughnut {
+  display: flex;
+  align-items: center;
+  @include border-bottom(5px, 5px, 0.3);
+  .icon-doughnut {
+    background-color: #4f6ee3;
+    color: white;
+    border-radius: 30px;
+    height: 46px;
+    width: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6px;
+    .bi-wallet2 {
+      height: 30px;
+      width: 30px;
+    }
+  }
+  .total-exprense-doughnut {
+    display: flex;
+    flex-direction: column;
+    h3 {
+      font-size: 22px;
+      margin: 0;
+    }
+  }
+}
+.main-detail-donghnut {
+  width: 300px;
+  height: 476px;
+  overflow: scroll;
+}
+#title-percent {
+  font-size: 11px;
+  font-weight: 700;
+}
+.header-detail-total-expens {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  div {
+    background-color: rgb(253, 60, 151);
+    color: white;
+    height: 28px;
+    width: 28px;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+  }
+  em {
+    font-size: 16px;
+  }
+}
+.chartjs-render-monitor {
+  z-index: -1;
 }

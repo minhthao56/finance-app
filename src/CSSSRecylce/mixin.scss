@@ -14,7 +14,7 @@
 @mixin border-bottom($m-bottom, $p-bottom, $opacity) {
   border-bottom: solid;
   border-width: 1px;
-  border-color: rgba(150, 150, 150, $opacity);
+  border-color: rgba(200, 200, 200, $opacity);
   margin-bottom: $m-bottom;
   padding-bottom: $p-bottom;
 }

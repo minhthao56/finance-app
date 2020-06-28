@@ -26,11 +26,11 @@ export default function User() {
   let history = useHistory();
 
   const validationEmail = new RegExp(
-    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+    '^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$',
     "g"
   );
   const validationName = new RegExp(
-    /[A-Z a-z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/,
+    '[A-Z a-z][a-zA-Z][^#&<>"~;$^%{}?]{1,20}$',
     "g"
   );
   const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
@@ -71,7 +71,7 @@ export default function User() {
       };
 
       axios
-        .post("https://jdint.sse.codesandbox.io/users/signup", user)
+        .post("https://pks85.sse.codesandbox.io/users/signup", user)
         .then((res) => {
           setValueName("");
           setValueEmail("");

@@ -15,30 +15,32 @@ export default function CardEpense(props) {
         </div>
         <h3>History</h3>
       </div>
-      {dataExpense.map((data) => {
-        return (
-          <div className="container-time-expense">
-            <div className="time-expense">
-              <div className="main-time-expense">
-                <span id="date-main">
-                  <Moment format="DD">{data.time}</Moment>
-                </span>
-                <div className="sub-time">
-                  <span>
-                    <Moment calendar>{data.time}</Moment>
+      <div className="main-container-time-expense">
+        {dataExpense.map((data) => {
+          return (
+            <div className="container-time-expense">
+              <div className="time-expense">
+                <div className="main-time-expense">
+                  <span id="date-main">
+                    <Moment format="DD">{data.time}</Moment>
                   </span>
-                  <span>
-                    {" "}
-                    <Moment format="MM/YYYY">{data.time}</Moment>
-                  </span>
+                  <div className="sub-time">
+                    <span>
+                      <Moment calendar>{data.time}</Moment>
+                    </span>
+                    <span>
+                      {" "}
+                      <Moment format="MM/YYYY">{data.time}</Moment>
+                    </span>
+                  </div>
                 </div>
+                <span>64$</span>
               </div>
-              <span>64$</span>
+              <HistortyADay data={data.data} />
             </div>
-            <HistortyADay data={data.data} />;
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
