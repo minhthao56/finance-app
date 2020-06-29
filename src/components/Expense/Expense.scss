@@ -275,8 +275,57 @@
   }
   @include border-bottom(5px, 5px, 0.1);
 }
-////
+//// err
 .err-input {
   font-size: 10px;
   color: #d62828;
+}
+// dark mode
+.dark-container-form-expense {
+  background-color: $color-dark;
+  border: none;
+}
+#dark-header-expense {
+  color: white;
+}
+#dark-amount-expense {
+  background-color: $color-dark;
+}
+#dark-bt-expense {
+  background-color: rgba(73, 73, 73, 0.3);
+  &:hover {
+    background-color: rgba(150, 150, 150, 0.3);
+  }
+}
+// dark mode category
+.dark-category {
+  background-color: $color-dark;
+}
+.dark-header-category {
+  background-color: $color-dark;
+  &:hover {
+    background-color: rgba(150, 150, 150, 0.3);
+  }
+}
+.dark-main-category {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar-track {
+    background-color: $color-dark;
+  }
+}
+.dark-header-category {
+  color: white;
+}
+.dark-category-icon {
+  background-color: $color-dark;
+  &:hover {
+    background-color: rgba(150, 150, 150, 0.3);
+  }
+}
+#dart-bt-category {
+  background-color: rgba(73, 73, 73, 0.3);
+  &:hover {
+    background-color: rgba(150, 150, 150, 0.3);
+  }
 }

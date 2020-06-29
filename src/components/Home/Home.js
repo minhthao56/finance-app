@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../Home/Home.scss";
 
@@ -23,6 +23,8 @@ export default function Home() {
   const [dataChatLine, setDataChartLine] = useState([]);
   const [dataChartBar, setDataChartBar] = useState([]);
   const dispatch = useDispatch();
+  const DarkMode = useSelector((state) => state.DarkMode);
+
   const url = "https://pks85.sse.codesandbox.io/";
 
   //  check login
@@ -31,6 +33,8 @@ export default function Home() {
     axios
       .post(url + "users/checklogin", { token })
       .then((res) => {
+        console.log("Ok");
+
         dispatch({
           type: "CHECK_LOGGED",
           data: res.data,
@@ -133,21 +137,21 @@ export default function Home() {
     checkLogined();
   }, []);
   return (
-    <div className="dark">
+    <div className={DarkMode ? "dark" : null}>
       <div>
         <Nav />
       </div>
       <div className="container-home">
-        <h2>Home</h2>
+        <h2 className="dark-hearder-home">Home</h2>
         <Row gutter={[16, 32]}>
           <Col span={6}>
             <CardTotal />
           </Col>
           <Col span={6}>
-            <CardRateWenk />
+            <CardRateWenk dataChatLine={dataChatLine} />
           </Col>
           <Col span={6}>
-            <CardRateMonth />
+            <CardRateMonth dataChartBar={dataChartBar} />
           </Col>
           <Col span={6}>
             <CardWeatherMini />

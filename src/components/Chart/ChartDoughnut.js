@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Progress } from "antd";
+import { useSelector } from "react-redux";
 
 export default function ChartDoughnut(props) {
   const [dataChart, setDataChart] = useState({});
   const [percentAndColorChart, setPercentAndColorChart] = useState([]);
+  const Balance = useSelector((state) => state.Balance);
+  const DarkMode = useSelector((state) => state.DarkMode);
   const { datatDataDoughnut } = props;
   const backgroundColor = [
     "#008879",
@@ -69,7 +72,13 @@ export default function ChartDoughnut(props) {
     dataDoughnut();
   }, [datatDataDoughnut]);
   return (
-    <div className="container-doughnut">
+    <div
+      className={
+        DarkMode
+          ? "container-doughnut dark-container-doughnut"
+          : "container-doughnut"
+      }
+    >
       <div className="conainter-icon-doughnut">
         <div className="icon-doughnut">
           <svg
@@ -91,7 +100,9 @@ export default function ChartDoughnut(props) {
           <span>
             <em>Total exprense</em>
           </span>
-          <h3>1000$</h3>
+          <h3 id={DarkMode ? "dark-total-exprense-doughnut" : null}>
+            {Balance[1]}$
+          </h3>
         </div>
       </div>
 
@@ -103,16 +114,26 @@ export default function ChartDoughnut(props) {
             </div>
             <em>Detail expense</em>
           </div>
-          <div className="main-detail-donghnut">
+          <div
+            className={
+              DarkMode
+                ? "main-detail-donghnut dark-main-chart-doughnut"
+                : "main-detail-donghnut"
+            }
+          >
             {percentAndColorChart.map((data) => {
               return (
                 <div className="detail-dought">
-                  <span id="title-percent">{data.title}</span>
+                  <span id="title-percent">
+                    {data.title} | {data.percent}%
+                  </span>
                   <Progress
                     percent={data.percent}
                     strokeColor={data.strokeColor}
                     size="small"
                     strokeWidth={5}
+                    trailColor={DarkMode ? "#999999" : "#dddddd"}
+                    showInfo={false}
                   />
                 </div>
               );

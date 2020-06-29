@@ -21,7 +21,7 @@ export default function Expense(props) {
 
   const Category = useSelector((state) => state.Category);
   const Balance = useSelector((state) => state.Balance);
-
+  const DarkMode = useSelector((state) => state.DarkMode);
   const CheckLogin = useSelector((state) => state.CheckLogin);
   const dispatch = useDispatch();
 
@@ -103,6 +103,7 @@ export default function Expense(props) {
         });
     }
   };
+
   const materialTheme = createMuiTheme({
     palette: {
       primary: {
@@ -122,14 +123,36 @@ export default function Expense(props) {
     },
   });
 
+  const materialThemeDark = createMuiTheme({
+    palette: {
+      primary: {
+        main: deepPurple[100],
+      },
+      type: "dark",
+    },
+    overrides: {
+      MuiPickersToolbar: {
+        toolbar: {
+          backgroundColor: grey,
+        },
+      },
+    },
+  });
+
   return (
-    <div className="container-form-expense">
+    <div
+      className={
+        DarkMode
+          ? "container-form-expense dark-container-form-expense"
+          : "container-form-expense"
+      }
+    >
       <div className="header-expense">
         <div className="icons-header-expense">
           <div>
             <i className="fas fa-money-bill-wave-alt"></i>
           </div>
-          <h3>Expense</h3>
+          <h3 id={DarkMode ? "dark-header-expense" : null}>Expense</h3>
         </div>
       </div>
       <form onSubmit={handleSubmitExpense}>
@@ -141,6 +164,7 @@ export default function Expense(props) {
             value={valueAmount}
             onChange={hanldeValueAmount}
             required
+            id={DarkMode ? "dark-amount-expense" : null}
           />
           <b>$</b>
         </div>
@@ -154,7 +178,13 @@ export default function Expense(props) {
           ></i>
 
           {Category.length ? (
-            <div className="category-icon category-expense-icon">
+            <div
+              className={
+                DarkMode
+                  ? "category-icon category-expense-icon dark-category-icon"
+                  : "category-icon category-expense-icon"
+              }
+            >
               <div className={"icon category-color" + Category[1]}>
                 <i className={Category[2]}></i>
               </div>
@@ -174,10 +204,11 @@ export default function Expense(props) {
             placeholder="Description"
             value={valuaDes}
             onChange={hanldeValueDes}
+            id={DarkMode ? "dark-amount-expense" : null}
           />
         </div>
         <div className="expense date-expense">
-          <ThemeProvider theme={materialTheme}>
+          <ThemeProvider theme={DarkMode ? materialThemeDark : materialTheme}>
             <KeyboardDateTimePicker
               variant="inline"
               value={selectedDate}
@@ -194,11 +225,13 @@ export default function Expense(props) {
             <Lottie config={{ animationData: animationData, loop: true }} />
           </div>
           <span>
-            Total your wallet now: <b>{Balance}$</b>
+            Total your wallet now: <b>{Balance[2]}$</b>
           </span>
         </div>
         <div className="bt-expense">
-          <button type="submit">Save</button>
+          <button id={DarkMode ? "dark-bt-expense" : null} type="submit">
+            Save
+          </button>
         </div>
       </form>
     </div>

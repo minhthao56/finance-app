@@ -127,28 +127,29 @@
 }
 .action-chart-line {
   margin-left: auto;
-  button {
-    margin-right: 5px;
-    border: none;
-    background-color: white;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transform: scale(1);
-    transition: transform 0.1s;
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      transform: scale(1.1);
-    }
+}
+.tb-nomal,
+.bt-color-btom {
+  margin-right: 5px;
+  border: none;
+  background-color: white;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.1s;
+  &:focus {
+    outline: none;
   }
-  #bt-color-btom {
-    border-bottom: solid;
-    height: 56px;
-    color: rgba(196, 161, 251, 1);
+  &:hover {
+    transform: scale(1.1);
   }
+}
+.bt-color-btom {
+  border-bottom: solid;
+  height: 56px;
+  color: rgba(196, 161, 251, 1);
 }
 // bi-wallet2
 .conainter-icon-doughnut {
@@ -208,6 +209,30 @@
     font-size: 16px;
   }
 }
-.chartjs-render-monitor {
-  z-index: -1;
+// Dark chart link
+
+.dark-chark-line {
+  background-color: #141414;
+  border: none;
+}
+#dark-balance {
+  color: white;
+}
+#bt-dart-chart-line {
+  background-color: #141414;
+}
+// Dark chark doughut
+.dark-container-doughnut {
+  background-color: $color-dark;
+  border: none;
+}
+#dark-total-exprense-doughnut {
+  color: white;
+}
+.dark-main-chart-doughnut {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar-track {
+    background-color: $color-dark;
+  }
 }

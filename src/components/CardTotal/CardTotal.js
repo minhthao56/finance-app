@@ -1,8 +1,9 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import "./CardTotal.scss";
 
 export default function CardTotal() {
+  const Balance = useSelector((state) => state.Balance);
   return (
     <div className="container-card-total ">
       <div className="header-card-total">
@@ -16,7 +17,7 @@ export default function CardTotal() {
           <span>
             <b>Today</b>
           </span>
-          <span className="money-sub-card">1000$</span>
+          <span className="money-sub-card">{Balance[4]}$</span>
         </div>
       </div>
     </div>

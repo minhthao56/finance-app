@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import "./Curency.scss";
 
@@ -10,6 +11,7 @@ import JP from "../../images/japan.png";
 export default function Currency() {
   const [dataCurrency, setDataCurrency] = useState(0);
   const [timeCurrency, setTimeCurrency] = useState("");
+  const DarkMode = useSelector((state) => state.DarkMode);
   const fetchDataCurrency = async () => {
     const res = await axios.get(
       "http://data.fixer.io/api/latest?access_key=e3aa50ac698a6df4b1daf305b103764c"
@@ -26,14 +28,18 @@ export default function Currency() {
   const JPY = dataCurrency.JPY && dataCurrency.JPY.toFixed(1);
 
   return (
-    <div className="container-currency">
+    <div
+      className={
+        DarkMode ? "container-currency dark-currency" : "container-currency"
+      }
+    >
       <div className="container-main-currency">
         <div className="header-currency">
           <div className="icon-header-currency">
             <div className="bg-icon-header-currency">
               <i className="fas fa-euro-sign"></i>
             </div>
-            <h3>Currency</h3>
+            <h3 id={DarkMode ? "dart-header-currency" : null}>Currency</h3>
           </div>
 
           <span>

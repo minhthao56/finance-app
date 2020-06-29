@@ -1,3 +1,5 @@
+@import "../../CSSSRecylce/mixin.scss";
+
 .container-home {
   margin-left: 70px;
   margin-right: 70px;
@@ -7,7 +9,16 @@
     margin-right: 10px;
   }
 }
-// .dark {
-//   background-color: #000000;
-//   color: white;
-// }
+// dark mode
+.dark {
+  background-color: #000000;
+  color: white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar-track {
+    background-color: $color-dark;
+  }
+}
+.dark-hearder-home {
+  color: white;
+}

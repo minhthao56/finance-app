@@ -14,6 +14,7 @@ export default function LineChart(props) {
 
   const CheckLogin = useSelector((state) => state.CheckLogin);
   const Balance = useSelector((state) => state.Balance);
+  const DarkMode = useSelector((state) => state.DarkMode);
   const { dataDataChatLine, dataDataChartBar } = props;
 
   const dataChartLine = () => {
@@ -100,7 +101,11 @@ export default function LineChart(props) {
     setIsShowChartLine(false);
   };
   return (
-    <div className="chart-line-home">
+    <div
+      className={
+        DarkMode ? "chart-line-home dark-chark-line" : "chart-line-home"
+      }
+    >
       <div className="total-line-chart">
         <div className="coin">
           <i className="fas fa-coins"></i>
@@ -108,7 +113,7 @@ export default function LineChart(props) {
         <div className="total">
           <em>Your Balance</em>
           <div className="money-total">
-            <h3>$ {Balance}</h3>
+            <h3 id={DarkMode ? "dark-balance" : null}>$ {Balance[2]}</h3>
             <div onClick={handleShowAddMoney}>
               <i className="fas fa-plus"></i>
             </div>
@@ -133,14 +138,16 @@ export default function LineChart(props) {
         </div>
         <div className="action-chart-line">
           <button
-            id={isShowChartLine ? "bt-color-btom" : null}
+            className={isShowChartLine ? "bt-color-btom" : "tb-nomal"}
             onClick={hanldeShowChartLine}
+            id={DarkMode ? "bt-dart-chart-line" : null}
           >
             This Week
           </button>
           <button
-            id={isShowChartLine ? null : "bt-color-btom"}
+            className={isShowChartLine ? "tb-nomal" : "bt-color-btom"}
             onClick={hanldeShowChartBar}
+            id={DarkMode ? "bt-dart-chart-line" : null}
           >
             This Month
           </button>

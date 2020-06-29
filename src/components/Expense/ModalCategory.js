@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Collapse from "@material-ui/core/Collapse";
 
 export default function ModalCategory(props) {
@@ -12,6 +12,8 @@ export default function ModalCategory(props) {
   const [isExpend7, setIsExpend7] = useState(false);
   const [isExpend8, setIsExpend8] = useState(false);
   const [isExpend9, setIsExpend9] = useState(false);
+
+  const DarkMode = useSelector((state) => state.DarkMode);
 
   const { hanleCloseCategory } = props;
   const dispatch = useDispatch();
@@ -53,18 +55,34 @@ export default function ModalCategory(props) {
   };
   return (
     <div className="container-category">
-      <div className="form-category">
-        <div className="header-container-category">
+      <div
+        className={DarkMode ? "form-category dark-category" : "form-category"}
+      >
+        <div
+          className={
+            DarkMode
+              ? "header-container-category dark-header-category"
+              : "header-container-category"
+          }
+        >
           <i className="fas fa-cubes"></i>
           <span>Category</span>
         </div>
-        <div className="main-category">
+        <div
+          className={
+            DarkMode ? "main-category dark-main-category" : "main-category"
+          }
+        >
           <div>
             <div
               onClick={() => {
                 return handleEpendCategory(1);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -81,7 +99,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-mug-hot"></i>
@@ -95,7 +119,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-bread-slice"></i>
@@ -109,7 +139,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-concierge-bell"></i>
@@ -123,7 +159,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color4">
                       <i className="fas fa-utensils"></i>
@@ -137,7 +179,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color5">
                       <i className="fas fa-glass-cheers"></i>
@@ -151,7 +199,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-cookie-bite"></i>
@@ -174,7 +228,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(2);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -191,7 +249,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-money-bill-wave-alt"></i>
@@ -205,7 +269,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-lightbulb"></i>
@@ -219,7 +289,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-desktop"></i>
@@ -233,7 +309,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color4">
                       <i className="fas fa-fire"></i>
@@ -247,7 +329,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color5">
                       <i className="fas fa-faucet"></i>
@@ -261,7 +349,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-faucet"></i>
@@ -275,7 +369,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-globe-asia"></i>
@@ -298,7 +398,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(3);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -315,7 +419,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-car-side"></i>
@@ -329,7 +439,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-gas-pump"></i>
@@ -343,7 +459,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-parking"></i>
@@ -357,7 +479,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color4">
                       <i className="fas fa-tools"></i>
@@ -371,7 +499,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color5">
                       <i className="fas fa-taxi"></i>
@@ -394,7 +528,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(4);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -411,7 +549,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-prescription-bottle"></i>
@@ -429,7 +573,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-gamepad"></i>
@@ -443,7 +593,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-book-reader"></i>
@@ -457,7 +613,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color4">
                       <i className="fas fa-dollar-sign"></i>
@@ -480,7 +642,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(5);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -497,7 +663,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-clock"></i>
@@ -511,7 +683,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-tshirt"></i>
@@ -525,7 +703,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-shoe-prints"></i>
@@ -548,7 +732,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(6);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -565,7 +753,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-hand-holding-heart"></i>
@@ -579,7 +773,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-sad-tear"></i>
@@ -593,7 +793,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-gift"></i>
@@ -607,7 +813,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color4">
                       <i className="fas fa-ring"></i>
@@ -630,7 +842,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(7);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -647,7 +863,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-user-md"></i>
@@ -661,7 +883,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-capsules"></i>
@@ -675,7 +903,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-futbol"></i>
@@ -689,7 +923,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color4">
                       <i className="fas fa-dumbbell"></i>
@@ -712,7 +952,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(8);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -729,7 +973,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-headphones-alt"></i>
@@ -743,7 +993,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-film"></i>
@@ -757,7 +1013,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color3">
                       <i className="fas fa-plane-departure"></i>
@@ -780,7 +1042,11 @@ export default function ModalCategory(props) {
               onClick={() => {
                 return handleEpendCategory(9);
               }}
-              className="header-category"
+              className={
+                DarkMode
+                  ? "header-category dark-header-category"
+                  : "header-category"
+              }
             >
               <div
                 className=" icon icon-header-category"
@@ -797,7 +1063,13 @@ export default function ModalCategory(props) {
               disableStrictModeCompat={true}
             >
               <div className="container-category-icon">
-                <div className="category-icon">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color1">
                       <i className="fas fa-graduation-cap"></i>
@@ -811,7 +1083,13 @@ export default function ModalCategory(props) {
                     />
                   </label>
                 </div>
-                <div className="category-icon ">
+                <div
+                  className={
+                    DarkMode
+                      ? "category-icon dark-category-icon"
+                      : "category-icon"
+                  }
+                >
                   <label>
                     <div className="icon category-color2">
                       <i className="fas fa-heart"></i>
@@ -835,6 +1113,7 @@ export default function ModalCategory(props) {
             onClick={() => {
               return hanleCloseCategory();
             }}
+            id={DarkMode ? "dart-bt-category" : null}
           >
             CLOSE
           </button>
