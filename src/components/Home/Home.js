@@ -137,12 +137,12 @@ export default function Home() {
     checkLogined();
   }, []);
   return (
-    <div className={DarkMode ? "dark" : null}>
+    <div className={DarkMode ? "dark" : "light"}>
       <div>
         <Nav />
       </div>
       <div className="container-home">
-        <h2 className="dark-hearder-home">Home</h2>
+        <h2 className={DarkMode ? "dark-hearder-home" : null}>Home</h2>
         <Row gutter={[16, 32]}>
           <Col span={6}>
             <CardTotal />

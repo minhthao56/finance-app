@@ -5,7 +5,7 @@ import "./CardTotal.scss";
 export default function CardTotal() {
   const Balance = useSelector((state) => state.Balance);
   return (
-    <div className="container-card-total ">
+    <div className="container-card-total">
       <div className="header-card-total">
         <h3>Total Expense</h3>
       </div>

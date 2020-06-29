@@ -6,6 +6,8 @@
   width: 100%;
   margin-bottom: 20px;
   padding: 10px 20px 10px 20px;
+  background-color: white;
+  box-shadow: 0px 0px 6px -5px rgba(0, 0, 0, 0.75);
   .header-currency {
     @include border-bottom(5px, 5px, 0.3);
     display: flex;
