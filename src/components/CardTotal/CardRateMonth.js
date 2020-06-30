@@ -8,7 +8,7 @@ export default function CardRateMonth(props) {
   return (
     <div className="container-card-total card-month">
       <div className="header-card-total">
-        <h3>Total Expense A Month</h3>
+        <h3>Total Expense This Month</h3>
       </div>
       <div className="main-card-total">
         <div className="icon-card-total">

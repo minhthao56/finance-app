@@ -15,7 +15,8 @@ export default function LineChart(props) {
   const CheckLogin = useSelector((state) => state.CheckLogin);
   const Balance = useSelector((state) => state.Balance);
   const DarkMode = useSelector((state) => state.DarkMode);
-  const { dataDataChatLine, dataDataChartBar } = props;
+  const { dataDataChatLine, dataDataChartBar, checkLogined } = props;
+  const url = "https://pks85.sse.codesandbox.io/";
 
   const dataChartLine = () => {
     setDataChart({
@@ -85,10 +86,11 @@ export default function LineChart(props) {
       idUser: CheckLogin.data._id,
     };
     axios
-      .post("https://jdint.sse.codesandbox.io/finance/income", inFoMoney)
+      .post(url + "finance/income", inFoMoney)
       .then((res) => {
         console.log(res.data);
         setMoneyAdd("");
+        return checkLogined();
       })
       .catch((err) => {
         console.log(err);

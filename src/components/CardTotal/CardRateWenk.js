@@ -19,7 +19,7 @@ export default function CardRateWenk(props) {
   return (
     <div className="container-card-total card-week">
       <div className="header-card-total">
-        <h3>Total Axpense A Week</h3>
+        <h3>Total Expense This Week</h3>
       </div>
       <div className="main-card-total">
         <div className="icon-card-total">

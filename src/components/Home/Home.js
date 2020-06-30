@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useSelector, useDispatch } from "react-redux";
 
 import "../Home/Home.scss";
 
@@ -16,126 +17,24 @@ import CardRateMonth from "../CardTotal/CardRateMonth";
 import CardWeatherMini from "../CardTotal/CardWeatherMini";
 import ChartDoughnut from "../Chart/ChartDoughnut";
 
-export default function Home() {
-  const [dataFinance, setDataFinance] = useState();
-  const [dataExpense, setDataExpense] = useState([]);
-  const [datatDataDoughnut, setDatatDataDoughnut] = useState([]);
-  const [dataChatLine, setDataChartLine] = useState([]);
-  const [dataChartBar, setDataChartBar] = useState([]);
-  const dispatch = useDispatch();
+export default function Home(props) {
+  const [id, setId] = useState("");
   const DarkMode = useSelector((state) => state.DarkMode);
-
+  const dispatch = useDispatch();
   const url = "https://pks85.sse.codesandbox.io/";
 
-  //  check login
-  const checkLogined = () => {
-    const token = localStorage.getItem("token");
-    axios
-      .post(url + "users/checklogin", { token })
-      .then((res) => {
-        console.log("Ok");
+  const {
+    dataExpense,
+    datatDataDoughnut,
+    dataChatLine,
+    dataChartBar,
+    fetchDataBalance,
+    fetchDataFetchExpense,
+    fetchDataChartDoughnut,
+    fetchDataChartLine,
+    checkLogined,
+  } = props;
 
-        dispatch({
-          type: "CHECK_LOGGED",
-          data: res.data,
-        });
-        setDataFinance(res.data);
-        fetchDataBalance(res.data._id);
-        fetchDataFetchExpense(res.data._id);
-        fetchDataChartDoughnut(res.data._id);
-        fetchDataChartLine(res.data._id);
-        fetchDataChartBar(res.data._id);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  // balance
-  const fetchDataBalance = (id) => {
-    const _id = dataFinance && dataFinance._id;
-
-    axios
-      .get(id ? url + "finance/balance/" + id : url + "finance/balance/" + _id)
-      .then((res) => {
-        dispatch({
-          type: "BALANCE",
-          data: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  // get expense
-  const fetchDataFetchExpense = (id) => {
-    const _id = dataFinance && dataFinance._id;
-    axios
-      .get(
-        id
-          ? url + "finance/get/expense/" + id
-          : url + "finance/get/expense/" + _id
-      )
-      .then((res) => {
-        setDataExpense(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  // get data doughnut
-  const fetchDataChartDoughnut = (id) => {
-    const _id = dataFinance && dataFinance._id;
-    axios
-      .get(
-        id
-          ? url + "finance/get/doughnut/" + id
-          : url + "finance/get/doughnut/" + _id
-      )
-      .then((res) => {
-        setDatatDataDoughnut(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  // get dataChatLine
-  const fetchDataChartLine = (id) => {
-    const _id = dataFinance && dataFinance._id;
-    axios
-      .get(
-        id
-          ? url + "finance/get/chartline/" + id
-          : url + "finance/get/chartline/" + _id
-      )
-      .then((res) => {
-        setDataChartLine(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  // get dataChat Bar
-  const fetchDataChartBar = (id) => {
-    const _id = dataFinance && dataFinance._id;
-    axios
-      .get(
-        id
-          ? url + "finance/get/charbar/" + id
-          : url + "finance/get/charbar/" + _id
-      )
-      .then((res) => {
-        setDataChartBar(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    checkLogined();
-  }, []);
   return (
     <div className={DarkMode ? "dark" : "light"}>
       <div>
@@ -162,6 +61,7 @@ export default function Home() {
             <ChartLine
               dataDataChatLine={dataChatLine}
               dataDataChartBar={dataChartBar}
+              checkLogined={checkLogined}
             />
             <ChartDoughnut datatDataDoughnut={datatDataDoughnut} />
           </Col>

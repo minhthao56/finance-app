@@ -21,7 +21,7 @@ export default function User() {
   const [isShowErrCharacter, setIsShowErrCharacter] = useState(false);
   const [isErrEmail, setIsErrEmail] = useState(false);
 
-  const validationCharacter = new RegExp("^[a-zA-Z0-9!@#$%^&*()_+]+$", "g");
+  const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
   const validationEmail = new RegExp(
     '^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$',
     "g"
@@ -43,7 +43,7 @@ export default function User() {
   // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (validationEmail.test(valueEmail) === false) {
+    if (validationEmail.test(valueEmail) === true) {
       setIsErrEmail(true);
     } else if (validationCharacter.test(valuePassword) === false) {
       setIsShowErrCharacter(true);
@@ -61,7 +61,7 @@ export default function User() {
           if (res.data.token) {
             localStorage.setItem("token", res.data.token.toString());
           }
-          history.push("/");
+          window.location.replace("/");
         })
         .catch((err) => {
           if (err.response === undefined) {

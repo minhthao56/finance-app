@@ -72,6 +72,12 @@
     position: absolute;
   }
 }
+#span-sign-out {
+  cursor: pointer;
+  &:hover {
+    color: $main-coler;
+  }
+}
 
 /// toggle
 * {
