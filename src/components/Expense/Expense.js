@@ -13,7 +13,6 @@ import "./Expense.scss";
 import ModalCategory from "./ModalCategory";
 
 export default function Expense(props) {
-  const [expanded, setExpanded] = useState(false);
   const [valueAmount, setValueAmount] = useState("");
   const [valuaDes, setValuaDes] = useState("");
   const [isShowErr, setIsShowErr] = useState(false);
@@ -33,16 +32,12 @@ export default function Expense(props) {
     fetchDataChartLine,
     fetchDataChartDoughnut,
     fetchDataFetchExpense,
+    hanleOpenCategory,
   } = props;
   const url = "https://pks85.sse.codesandbox.io/";
   const regex = new RegExp("^[0-9]+$");
   // Open and close category
-  const hanleOpenCategory = () => {
-    setExpanded(!expanded);
-  };
-  const hanleCloseCategory = () => {
-    setExpanded(!expanded);
-  };
+
   // value amount
   const hanldeValueAmount = (e) => {
     const value = e.target.value;
@@ -174,7 +169,9 @@ export default function Expense(props) {
         <div className="expense category-expense">
           <i
             className="fas fa-question-circle question-circle"
-            onClick={hanleOpenCategory}
+            onClick={() => {
+              return hanleOpenCategory();
+            }}
           ></i>
 
           {Category.length ? (
@@ -193,9 +190,6 @@ export default function Expense(props) {
           ) : (
             <span onClick={hanleOpenCategory}>Select category</span>
           )}
-          {expanded ? (
-            <ModalCategory hanleCloseCategory={hanleCloseCategory} />
-          ) : null}
         </div>
         <div className="expense " id="description-expense">
           <i className="fas fa-bars"></i>

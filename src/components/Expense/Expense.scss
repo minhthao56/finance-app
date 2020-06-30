@@ -100,7 +100,6 @@
   }
 }
 // container-category
-
 .container-category {
   @include flexCenter(center, row);
   position: fixed;
@@ -109,6 +108,7 @@
   right: 0;
   left: 0;
   z-index: 1;
+  background-color: rgba($color: #000000, $alpha: 0.3);
 
   input {
     width: initial;
@@ -123,6 +123,7 @@
   width: 400px;
   padding: 10px 10px 10px 50px;
   font-size: 14px;
+  border-radius: 4px;
   label {
     display: flex;
     cursor: pointer;

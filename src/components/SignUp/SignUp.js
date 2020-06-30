@@ -100,7 +100,7 @@ export default function User() {
           <div className="col2-signup">
             <div className="contaiter-form">
               <div className="logo-signup">
-                <img src={ImageFinance} />
+                <img src={ImageFinance} alt="" />
                 <h1>money</h1>
               </div>
               {isErrCreateUser === true ? (

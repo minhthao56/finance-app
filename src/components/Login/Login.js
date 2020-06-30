@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Row, Col, Alert } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "antd/dist/antd.css";
 import "../SignUp/SiguUp.scss";
@@ -26,8 +26,6 @@ export default function User() {
     '^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$',
     "g"
   );
-
-  let history = useHistory();
 
   // Handle mail
   const handleChangeEmail = (event) => {
