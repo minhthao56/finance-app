@@ -7,7 +7,8 @@ import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 
 import ImageFinance from "../../images/finance.png";
-import WellCome from "../../images/Welcome.png";
+import DarkImageFinance from "../../images/time.png";
+import WellCome from "../../images/Wellcome.svg";
 import "./SiguUp.scss";
 export default function User() {
   const [valueName, setValueName] = useState("");
@@ -23,14 +24,16 @@ export default function User() {
 
   const [isErrCreateUser, setIsErrCreateUser] = useState(false);
 
+  const DarkMode = JSON.parse(localStorage.getItem("dark"));
+
   let history = useHistory();
 
   const validationEmail = new RegExp(
-    /^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$/,
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
     "g"
   );
   const validationName = new RegExp(
-    /[A-Z a-z][a-zA-Z][^#&<>"~;$^%{}?]{1,20}$/,
+    /[A-Z a-z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$/,
     "g"
   );
   const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
@@ -52,15 +55,20 @@ export default function User() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validationEmail.test(valueEmail) === false) {
+      console.log(validationEmail.test(valueEmail));
+
       setIsErrEmail(true);
       setMsgErrEmail("Email Invaid");
     } else if (validationName.test(valueName) === false) {
+      setIsErrEmail(false);
       setIsErrName(true);
       setMsgErrName("Name Inclue number and letter");
     } else if (
       valuePassword.length < 8 &&
       validationCharacter.test(valuePassword)
     ) {
+      setIsErrEmail(false);
+      setIsErrName(false);
       setIsErrPass(true);
       setMsgErrPass("Your password is at lest 8 characters");
     } else {
@@ -89,7 +97,11 @@ export default function User() {
     }
   };
   return (
-    <div className="containe-signup">
+    <div
+      className={
+        DarkMode ? "containe-signup dark-containe-signup" : "containe-signup"
+      }
+    >
       <Row className="row-signup">
         <Col xs={0} sm={0} md={0} lg={12} xl={12}>
           <div className="col1-signup">
@@ -98,10 +110,13 @@ export default function User() {
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={12} className="col22-signup">
           <div className="col2-signup">
-            <div className="contaiter-form">
+            <div
+              className="contaiter-form"
+              id={DarkMode ? "dark-contaiter-form" : null}
+            >
               <div className="logo-signup">
-                <img src={ImageFinance} alt="" />
-                <h1>money</h1>
+                <img src={DarkMode ? DarkImageFinance : ImageFinance} alt="" />
+                <h1 className={DarkMode ? "title-money-login" : null}>money</h1>
               </div>
               {isErrCreateUser === true ? (
                 <Alert severity="error">Email already exists</Alert>
@@ -147,14 +162,19 @@ export default function User() {
                     required
                   />
                 </div>
-                <button type="submit">Sign up</button>
+                <button type="submit" id={DarkMode ? "bt-login" : null}>
+                  Sign up
+                </button>
               </form>
               <p className="policy">
                 By signing up, you agree to our{" "}
                 <b>Terms , Data Policy and Cookies Policy .</b>
               </p>
             </div>
-            <div className="have-account">
+            <div
+              className="have-account"
+              id={DarkMode ? "dark-contaiter-form" : null}
+            >
               <span>
                 Have an account?{" "}
                 <Link to="/user/login">

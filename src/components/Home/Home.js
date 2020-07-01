@@ -15,7 +15,7 @@ import CardRateWenk from "../CardTotal/CardRateWenk";
 import CardRateMonth from "../CardTotal/CardRateMonth";
 import CardWeatherMini from "../CardTotal/CardWeatherMini";
 import ChartDoughnut from "../Chart/ChartDoughnut";
-import ChooseCurrency from "../ChooseCurrency/ChooseCurrency";
+
 import ModalCategory from "../Expense/ModalCategory";
 
 export default function Home(props) {
@@ -48,7 +48,6 @@ export default function Home(props) {
       {expanded ? (
         <ModalCategory hanleCloseCategory={hanleCloseCategory} />
       ) : null}
-      <ChooseCurrency />
       <div id={isBlur ? "blur" : null}>
         <div>
           <Nav />

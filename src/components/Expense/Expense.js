@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+
 import { KeyboardDateTimePicker } from "@material-ui/pickers";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
@@ -8,9 +9,7 @@ import { deepPurple, grey } from "@material-ui/core/colors";
 
 import { Lottie } from "@crello/react-lottie";
 import animationData from "../../images/wallet-icon.json";
-
 import "./Expense.scss";
-import ModalCategory from "./ModalCategory";
 
 export default function Expense(props) {
   const [valueAmount, setValueAmount] = useState("");
@@ -36,6 +35,7 @@ export default function Expense(props) {
   } = props;
   const url = "https://pks85.sse.codesandbox.io/";
   const regex = new RegExp("^[0-9]+$");
+
   // Open and close category
 
   // value amount
@@ -161,7 +161,7 @@ export default function Expense(props) {
             required
             id={DarkMode ? "dark-amount-expense" : null}
           />
-          <b>$</b>
+          <b>{CheckLogin.data && CheckLogin.data.defaultCurrency}</b>
         </div>
         {isShowErrSelect ? (
           <span className="err-input">*Let select one</span>
@@ -219,7 +219,11 @@ export default function Expense(props) {
             <Lottie config={{ animationData: animationData, loop: true }} />
           </div>
           <span>
-            Total your wallet now: <b>{Balance[2]}$</b>
+            Total your wallet now:{" "}
+            <b>
+              {Balance[2]}
+              {CheckLogin.data && CheckLogin.data.defaultCurrency}
+            </b>
           </span>
         </div>
         <div className="bt-expense">

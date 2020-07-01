@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./CardTotal.scss";
+import { useSelector } from "react-redux";
 export default function CardRateWenk(props) {
   const { dataChatLine } = props;
 
   const [dataSumWeek, setDataSumWeek] = useState(0);
+  const CheckLogin = useSelector((state) => state.CheckLogin);
 
   const totalExpenseWeek = () => {
     const sumWeek = dataChatLine.reduce((a, b) => {
@@ -29,7 +31,9 @@ export default function CardRateWenk(props) {
           <span>
             <b>Week</b>
           </span>
-          <span className="money-sub-card">{dataSumWeek}$</span>
+          <span className="money-sub-card">
+            {dataSumWeek} {CheckLogin.data && CheckLogin.data.defaultCurrency}
+          </span>
         </div>
       </div>
     </div>

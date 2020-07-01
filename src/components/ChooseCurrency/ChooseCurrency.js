@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import "./ChooseCurrency.scss";
 import { useSelector } from "react-redux";
+import axios from "axios";
+
 import dataCurrency from "./Currency.json";
 import KeyColor from "./KeyColor.json";
 
-export default function ChooseCurrency() {
+export default function ChooseCurrency(props) {
   const [valueChoose, setValueChoose] = useState("");
+  const CheckLogin = useSelector((state) => state.CheckLogin);
+
+  const { handleLoseChooseCurrency } = props;
+
+  const url = "https://pks85.sse.codesandbox.io/";
+
   const fullDataCurrency = [];
   for (let i = 0; i < dataCurrency.length; i++) {
     for (let j = 0; j < dataCurrency.length; j++) {
@@ -22,7 +30,13 @@ export default function ChooseCurrency() {
   };
   const handleSubmitChooseCurrency = (event) => {
     event.preventDefault();
-    console.log(valueChoose);
+    const currencyInfo = {
+      idUser: CheckLogin.data._id,
+      sign: valueChoose,
+    };
+    axios.post(url + "users/currency", currencyInfo).then((res) => {
+      return handleLoseChooseCurrency();
+    });
   };
   return (
     <div className="container-choose">

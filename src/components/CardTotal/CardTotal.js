@@ -4,6 +4,7 @@ import "./CardTotal.scss";
 
 export default function CardTotal() {
   const Balance = useSelector((state) => state.Balance);
+  const CheckLogin = useSelector((state) => state.CheckLogin);
   return (
     <div className="container-card-total">
       <div className="header-card-total">
@@ -17,7 +18,10 @@ export default function CardTotal() {
           <span>
             <b>Today</b>
           </span>
-          <span className="money-sub-card">{Balance[4]}$</span>
+          <span className="money-sub-card">
+            {Balance[4]}
+            {CheckLogin.data && CheckLogin.data.defaultCurrency}
+          </span>
         </div>
       </div>
     </div>

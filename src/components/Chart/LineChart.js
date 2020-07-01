@@ -115,8 +115,14 @@ export default function LineChart(props) {
         <div className="total">
           <em>Your Balance</em>
           <div className="money-total">
-            <h3 id={DarkMode ? "dark-balance" : null}>$ {Balance[2]}</h3>
-            <div onClick={handleShowAddMoney}>
+            <h3 id={DarkMode ? "dark-balance" : null}>
+              {" "}
+              {CheckLogin.data && CheckLogin.data.defaultCurrency} {Balance[2]}
+            </h3>
+            <div
+              onClick={handleShowAddMoney}
+              id={DarkMode ? "dark-fa-plus" : null}
+            >
               <i className="fas fa-plus"></i>
             </div>
             <form
@@ -130,8 +136,12 @@ export default function LineChart(props) {
                 placeholder="Money"
                 onChange={hanleVulueMoney}
                 value={moneyAdd}
+                id={DarkMode ? "dark-input-add-money" : null}
               />
-              <button type="submit">
+              <button
+                type="submit"
+                id={DarkMode ? "dark-fa-paper-plane" : null}
+              >
                 <i className="fas fa-paper-plane"></i>
               </button>
             </form>

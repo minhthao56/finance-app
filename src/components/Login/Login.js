@@ -7,8 +7,10 @@ import "antd/dist/antd.css";
 import "../SignUp/SiguUp.scss";
 
 import ImageFinance from "../../images/finance.png";
-import Login from "../../images/Login.png";
+import DarkImageFinance from "../../images/time.png";
+import Login from "../../images/Login.svg";
 import ForgotPass from "./ForgotPass";
+import { useDispatch } from "react-redux";
 
 export default function User() {
   const [mesErr, setMesErr] = useState("");
@@ -21,9 +23,12 @@ export default function User() {
   const [isShowErrCharacter, setIsShowErrCharacter] = useState(false);
   const [isErrEmail, setIsErrEmail] = useState(false);
 
+  const DarkMode = JSON.parse(localStorage.getItem("dark"));
+  const dispatch = useDispatch();
+
   const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
   const validationEmail = new RegExp(
-    '^(([^<>()[].,;:s@"]+(.[^<>()[].,;:s@"]+)*)|(".+"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$',
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
     "g"
   );
 
@@ -41,7 +46,7 @@ export default function User() {
   // Handle submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (validationEmail.test(valueEmail) === true) {
+    if (validationEmail.test(valueEmail) === false) {
       setIsErrEmail(true);
     } else if (validationCharacter.test(valuePassword) === false) {
       setIsShowErrCharacter(true);
@@ -56,6 +61,10 @@ export default function User() {
         .then((res) => {
           setValueEmail("");
           setValuePassword("");
+          dispatch({
+            type: "CHECK_LOGGED",
+            data: res.data,
+          });
           if (res.data.token) {
             localStorage.setItem("token", res.data.token.toString());
           }
@@ -80,14 +89,21 @@ export default function User() {
     setIsShowForgotPass(!isShowForgotPass);
   };
   return (
-    <div className="containe-signup">
+    <div
+      className={
+        DarkMode ? "containe-signup dark-containe-signup" : "containe-signup"
+      }
+    >
       <Row className="row-signup">
         <Col xs={24} sm={24} md={24} lg={12} xl={12} className="col22-signup">
           <div className="col2-signup">
-            <div className="contaiter-form">
+            <div
+              className="contaiter-form"
+              id={DarkMode ? "dark-contaiter-form" : null}
+            >
               <div className="logo-signup">
-                <img src={ImageFinance} alt="" />
-                <h1>money</h1>
+                <img src={DarkMode ? DarkImageFinance : ImageFinance} alt="" />
+                <h1 className={DarkMode ? "title-money-login" : null}>money</h1>
               </div>
               {isErrLogin === true ? (
                 <Alert
@@ -124,7 +140,9 @@ export default function User() {
                     required
                   />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" id={DarkMode ? "bt-login" : null}>
+                  Login
+                </button>
                 <div className="forgot-pass">
                   <span onClick={handleShowForgotPass}>
                     I Forgot My Password
@@ -136,7 +154,10 @@ export default function User() {
                 <b>Terms , Data Policy and Cookies Policy .</b>
               </p>
             </div>
-            <div className="have-account">
+            <div
+              className="have-account"
+              id={DarkMode ? "dark-contaiter-form" : null}
+            >
               <span>
                 Haven't an account?
                 <Link to="/user/signup">

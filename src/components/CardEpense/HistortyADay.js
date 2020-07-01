@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 export default function HistortyADay(props) {
   const { data } = props;
   const DarkMode = useSelector((state) => state.DarkMode);
+  const CheckLogin = useSelector((state) => state.CheckLogin);
   return (
     <div>
       {data.map((d) => {
@@ -21,7 +22,10 @@ export default function HistortyADay(props) {
               </div>
               <span>{d.title}</span>
             </div>
-            <span>{d.amount}$</span>
+            <span>
+              {d.amount}
+              {CheckLogin.data && CheckLogin.data.defaultCurrency}
+            </span>
           </div>
         );
       })}

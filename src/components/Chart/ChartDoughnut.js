@@ -8,6 +8,7 @@ export default function ChartDoughnut(props) {
   const [percentAndColorChart, setPercentAndColorChart] = useState([]);
   const Balance = useSelector((state) => state.Balance);
   const DarkMode = useSelector((state) => state.DarkMode);
+  const CheckLogin = useSelector((state) => state.CheckLogin);
   const { datatDataDoughnut } = props;
   const backgroundColor = [
     "#008879",
@@ -101,7 +102,7 @@ export default function ChartDoughnut(props) {
             <em>Total exprense</em>
           </span>
           <h3 id={DarkMode ? "dark-total-exprense-doughnut" : null}>
-            {Balance[1]}$
+            {Balance[1]} {CheckLogin.data && CheckLogin.data.defaultCurrency}
           </h3>
         </div>
       </div>

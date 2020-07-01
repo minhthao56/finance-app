@@ -8,6 +8,7 @@ import HistortyADay from "./HistortyADay";
 export default function CardEpense(props) {
   const { dataExpense } = props;
   const DarkMode = useSelector((state) => state.DarkMode);
+  const CheckLogin = useSelector((state) => state.CheckLogin);
   return (
     <div
       className={
@@ -46,7 +47,9 @@ export default function CardEpense(props) {
                     </span>
                   </div>
                 </div>
-                <span>64$</span>
+                <span>
+                  64 {CheckLogin.data && CheckLogin.data.defaultCurrency}
+                </span>
               </div>
               <HistortyADay data={data.data} />
             </div>

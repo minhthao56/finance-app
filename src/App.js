@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
+import ChooseCurrency from "./components/ChooseCurrency/ChooseCurrency";
 
 export default function App() {
   const [dataFinance, setDataFinance] = useState();
@@ -16,6 +17,7 @@ export default function App() {
   const [dataChatLine, setDataChartLine] = useState([]);
   const [dataChartBar, setDataChartBar] = useState([]);
   const [dataIcome, setDataIncome] = useState([]);
+  const [isLoseCurrency, setIsLoseCurrency] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -31,6 +33,7 @@ export default function App() {
           type: "CHECK_LOGGED",
           data: res.data,
         });
+        handleLoseChooseCurrencyByData(res.data);
         setDataFinance(res.data);
         fetchDataBalance(res.data._id);
         fetchDataFetchExpense(res.data._id);
@@ -137,13 +140,23 @@ export default function App() {
         console.log(err);
       });
   };
-
+  const handleLoseChooseCurrency = () => {
+    setIsLoseCurrency(false);
+  };
+  const handleLoseChooseCurrencyByData = (data) => {
+    if (data.defaultCurrency === undefined) {
+      setIsLoseCurrency(true);
+    }
+  };
   useEffect(() => {
     checkLogined();
   }, []);
   return (
     <Router>
       <div>
+        {isLoseCurrency ? (
+          <ChooseCurrency handleLoseChooseCurrency={handleLoseChooseCurrency} />
+        ) : null}
         <Switch>
           <Route exact path={`/`}>
             <Home
