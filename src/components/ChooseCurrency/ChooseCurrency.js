@@ -56,7 +56,7 @@ export default function ChooseCurrency(props) {
               return (
                 <label>
                   <div
-                    className="main-currency"
+                    className="main-currency-choose"
                     id={DarkMode ? "dark-main-currency" : null}
                   >
                     <div className={"icon-sign-currency" + data.color}>

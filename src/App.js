@@ -19,6 +19,8 @@ export default function App() {
   const [dataIcome, setDataIncome] = useState([]);
   const [isLoseCurrency, setIsLoseCurrency] = useState(false);
 
+  const [blurHome, setBlurHome] = useState(false);
+
   const dispatch = useDispatch();
 
   const url = "https://pks85.sse.codesandbox.io/";
@@ -146,6 +148,7 @@ export default function App() {
   const handleLoseChooseCurrencyByData = (data) => {
     if (data.defaultCurrency === undefined) {
       setIsLoseCurrency(true);
+      setBlurHome(true);
     }
   };
   useEffect(() => {
@@ -169,6 +172,7 @@ export default function App() {
               fetchDataChartDoughnut={fetchDataChartDoughnut}
               fetchDataChartLine={fetchDataChartLine}
               checkLogined={checkLogined}
+              blurHome={blurHome}
             />
           </Route>
           <Route exact path={`/dashboard`} component={DashBoard} />

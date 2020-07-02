@@ -8,7 +8,7 @@ export default function CardTotal() {
   return (
     <div className="container-card-total">
       <div className="header-card-total">
-        <h3>Total Expense</h3>
+        <h3>Total Expense One Day</h3>
       </div>
       <div className="main-card-total">
         <div className="icon-card-total ">

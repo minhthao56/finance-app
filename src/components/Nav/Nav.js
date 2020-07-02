@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+
 import "../../weather-icons/css/weather-icons.min.css";
 
 import "./Nav.scss";
 import ImageFinance from "../../images/finance.png";
 import LogoForDarkMode from "../../images/time.png";
-export default function Nav() {
+import Dawer from "../Dawer/Dawer";
+
+export default function Nav(props) {
   const CheckLogin = useSelector((state) => state.CheckLogin);
   const dark = JSON.parse(localStorage.getItem("dark"));
 
   const [darkMode, setDarkMode] = useState(dark || false);
+  const [dataWeatherCurrent, setDataWeatherCurrent] = useState({});
+  const [dataWeather, setDataWeather] = useState({});
+  const Blur = useSelector((state) => state.Blur);
+
+  const { isBlur, blurHome } = props;
+
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -30,6 +40,22 @@ export default function Nav() {
     });
   };
 
+  const fetchDataWeather = () => {
+    navigator.geolocation.getCurrentPosition(async function (position) {
+      const longitude = position.coords.longitude;
+      const latitude = position.coords.latitude;
+      const res = await axios.get(
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+          latitude +
+          "&lon=" +
+          longitude +
+          "&%20exclude={part}&appid=2a5a281a8096a8e7c005608442b3ac7f"
+      );
+      setDataWeatherCurrent(res.data.current);
+      setDataWeather(res.data.current.weather);
+    });
+  };
+
   //handle SignOut
   const handleSignOut = () => {
     localStorage.removeItem("token");
@@ -38,9 +64,19 @@ export default function Nav() {
   };
   useEffect(() => {
     handleValueDarkModeLocal();
+    fetchDataWeather();
   }, []);
+  const id = dataWeather[0] && dataWeather[0].id;
+  // Exchange celsius
+
+  const celsiusTemp = dataWeatherCurrent.temp - 273.15;
+  const celsiusTempToFixed = celsiusTemp && celsiusTemp.toFixed();
+
   return (
-    <nav className={darkMode ? "nav dark-nav" : "nav"}>
+    <nav
+      className={darkMode ? "nav dark-nav" : "nav"}
+      id={isBlur || blurHome || Blur ? "blur-nav" : null}
+    >
       <div className="container-nav ">
         <div className="logo-signup logo-nav">
           <img
@@ -50,11 +86,11 @@ export default function Nav() {
           />
           <h1 className={darkMode ? "dart-logo-dark" : null}>money</h1>
         </div>
+
         <div className="container-link-nav">
           <Link className="link-nav" to="/">
             Home
           </Link>
-
           <div className="container-profile">
             <Link className="link-nav" to="/user/profile">
               <div
@@ -70,19 +106,18 @@ export default function Nav() {
             <Link className="link-nav" to="/user/profile">
               <span>{CheckLogin.data && CheckLogin.data.name}</span>
             </Link>
-            <span onClick={handleSignOut} id="span-sign-out">
+            <span onClick={handleSignOut} className="span-sign-out">
               {" "}
               / Sign Out
             </span>
           </div>
-
           <div
             className={
               darkMode ? "weather-nav dark-weather-nav" : "weather-nav"
             }
           >
-            <i className="wi wi-owm-800" id="icon-weather-nav"></i>
-            <span>25</span>{" "}
+            <i className={"wi wi-owm-" + id} id="icon-weather-nav"></i>
+            <span>{celsiusTempToFixed}</span>{" "}
             <i className="wi wi-celsius" id="icon-celsius-nav"></i>
           </div>
           <div>
@@ -99,6 +134,7 @@ export default function Nav() {
               <div className="ball"></div>
             </label>
           </div>
+          <Dawer />
         </div>
       </div>
     </nav>

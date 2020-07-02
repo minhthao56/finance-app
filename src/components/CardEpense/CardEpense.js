@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
 import "./CardEpense.scss";
@@ -9,6 +9,12 @@ export default function CardEpense(props) {
   const { dataExpense } = props;
   const DarkMode = useSelector((state) => state.DarkMode);
   const CheckLogin = useSelector((state) => state.CheckLogin);
+  const [sum, setSum] = useState(0);
+
+  const handleSumForExpenseCard = (dataSum) => {
+    setSum(dataSum);
+  };
+
   return (
     <div
       className={
@@ -48,10 +54,13 @@ export default function CardEpense(props) {
                   </div>
                 </div>
                 <span>
-                  64 {CheckLogin.data && CheckLogin.data.defaultCurrency}
+                  {sum} {CheckLogin.data && CheckLogin.data.defaultCurrency}
                 </span>
               </div>
-              <HistortyADay data={data.data} />
+              <HistortyADay
+                data={data.data}
+                handleSumForExpenseCard={handleSumForExpenseCard}
+              />
             </div>
           );
         })}

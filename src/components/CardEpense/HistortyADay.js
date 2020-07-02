@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function HistortyADay(props) {
-  const { data } = props;
+  const { data, handleSumForExpenseCard } = props;
   const DarkMode = useSelector((state) => state.DarkMode);
   const CheckLogin = useSelector((state) => state.CheckLogin);
+  const sumDataADay = () => {
+    const mapData = data.map((a) => {
+      return a.amount;
+    });
+    const sumData = mapData.reduce((a, b) => {
+      return a + b;
+    }, 0);
+    return handleSumForExpenseCard(sumData);
+  };
+  useEffect(() => {
+    sumDataADay();
+  }, [data]);
   return (
     <div>
       {data.map((d) => {

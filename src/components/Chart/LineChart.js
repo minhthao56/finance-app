@@ -109,44 +109,47 @@ export default function LineChart(props) {
       }
     >
       <div className="total-line-chart">
-        <div className="coin">
-          <i className="fas fa-coins"></i>
-        </div>
         <div className="total">
-          <em>Your Balance</em>
-          <div className="money-total">
-            <h3 id={DarkMode ? "dark-balance" : null}>
-              {" "}
-              {CheckLogin.data && CheckLogin.data.defaultCurrency} {Balance[2]}
-            </h3>
-            <div
-              onClick={handleShowAddMoney}
-              id={DarkMode ? "dark-fa-plus" : null}
-            >
-              <i className="fas fa-plus"></i>
-            </div>
-            <form
-              onSubmit={handleSubAddMoney}
-              className={
-                isShowAddMoney ? "display-add-money" : "hidden-add-money"
-              }
-            >
-              <input
-                type="text"
-                placeholder="Money"
-                onChange={hanleVulueMoney}
-                value={moneyAdd}
-                id={DarkMode ? "dark-input-add-money" : null}
-              />
-              <button
-                type="submit"
-                id={DarkMode ? "dark-fa-paper-plane" : null}
-              >
-                <i className="fas fa-paper-plane"></i>
-              </button>
-            </form>
+          <div className="coin">
+            <i className="fas fa-coins"></i>
           </div>
-          <span>TOTAL EXPENSE OF THIS WEEK AND MONTH </span>
+          <div>
+            <em>Your Balance</em>
+            <div className="money-total">
+              <h3 id={DarkMode ? "dark-balance" : null}>
+                {" "}
+                {CheckLogin.data && CheckLogin.data.defaultCurrency}{" "}
+                {Balance[2]}
+              </h3>
+              <div
+                onClick={handleShowAddMoney}
+                id={DarkMode ? "dark-fa-plus" : null}
+              >
+                <i className="fas fa-plus"></i>
+              </div>
+              <form
+                onSubmit={handleSubAddMoney}
+                className={
+                  isShowAddMoney ? "display-add-money" : "hidden-add-money"
+                }
+              >
+                <input
+                  type="text"
+                  placeholder="Money"
+                  onChange={hanleVulueMoney}
+                  value={moneyAdd}
+                  id={DarkMode ? "dark-input-add-money" : null}
+                />
+                <button
+                  type="submit"
+                  id={DarkMode ? "dark-fa-paper-plane" : null}
+                >
+                  <i className="fas fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+            <span>TOTAL EXPENSE OF THIS WEEK AND MONTH </span>
+          </div>
         </div>
         <div className="action-chart-line">
           <button

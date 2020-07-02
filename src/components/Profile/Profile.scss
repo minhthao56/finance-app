@@ -1,5 +1,12 @@
 @import "../../CSSSRecylce/mixin.scss";
 
+#blur-porfile {
+  filter: blur(8px);
+}
+.light-title {
+  padding-top: 74px;
+  margin-left: 70px;
+}
 .container-profile-history {
   margin-left: 70px;
   margin-right: 70px;
@@ -331,6 +338,9 @@
   }
 }
 #dark-title {
+  color: white;
+}
+.dark-title {
   color: white;
 }
 #dark-profile {

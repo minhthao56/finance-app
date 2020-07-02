@@ -22,7 +22,7 @@ export default function Home(props) {
   const DarkMode = useSelector((state) => state.DarkMode);
   const [expanded, setExpanded] = useState(false);
   const [isBlur, setIsBlur] = useState(false);
-
+  const Blur = useSelector((state) => state.Blur);
   const {
     dataExpense,
     datatDataDoughnut,
@@ -33,6 +33,7 @@ export default function Home(props) {
     fetchDataChartDoughnut,
     fetchDataChartLine,
     checkLogined,
+    blurHome,
   } = props;
   const hanleOpenCategory = () => {
     setExpanded(!expanded);
@@ -45,32 +46,30 @@ export default function Home(props) {
 
   return (
     <div className={DarkMode ? "dark" : "light"}>
+      <Nav isBlur={isBlur} blurHome={blurHome} />
       {expanded ? (
         <ModalCategory hanleCloseCategory={hanleCloseCategory} />
       ) : null}
-      <div id={isBlur ? "blur" : null}>
-        <div>
-          <Nav />
-        </div>
+      <div id={isBlur || blurHome || Blur ? "blur" : null}>
         <div className="container-home">
           <h2 className={DarkMode ? "dark-hearder-home" : null}>Home</h2>
 
-          <Row gutter={[16, 32]}>
-            <Col span={6}>
+          <Row gutter={[16, 32]} id="row-card">
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
               <CardTotal />
             </Col>
-            <Col span={6}>
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
               <CardRateWenk dataChatLine={dataChatLine} />
             </Col>
-            <Col span={6}>
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
               <CardRateMonth dataChartBar={dataChartBar} />
             </Col>
-            <Col span={6}>
+            <Col xs={24} sm={12} md={12} lg={6} xl={6}>
               <CardWeatherMini />
             </Col>
           </Row>
           <Row gutter={[16, 32]}>
-            <Col span={14} id="col1-home">
+            <Col xs={24} sm={24} md={24} lg={14} xl={14} id="col1-home">
               <ChartLine
                 dataDataChatLine={dataChatLine}
                 dataDataChartBar={dataChartBar}
@@ -78,7 +77,7 @@ export default function Home(props) {
               />
               <ChartDoughnut datatDataDoughnut={datatDataDoughnut} />
             </Col>
-            <Col span={10}>
+            <Col xs={24} sm={24} md={24} lg={10} xl={10}>
               <Currency />
               <Expense
                 fetchDataBalance={fetchDataBalance}
