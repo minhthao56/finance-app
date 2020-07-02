@@ -5,7 +5,10 @@ import "./Forgot.scss";
 
 export default function ForgotPass(props) {
   const [email, setEmail] = useState();
+
   const { handleCloseForgotPass } = props;
+  const dark = JSON.parse(localStorage.getItem("dark"));
+  const url = "https://pks85.sse.codesandbox.io/";
 
   // handle Value Email
   const handleValueEmail = (event) => {
@@ -16,13 +19,17 @@ export default function ForgotPass(props) {
   const handleSubmitFotgotPass = async (event) => {
     event.preventDefault();
     const forgotEmail = { email: email };
-    const res = await axios.post("", forgotEmail);
+    const res = await axios.post(url + "users/forgot", forgotEmail);
     console.log(res.data);
     setEmail("");
   };
   return (
     <div className="container-form-fogot">
-      <div className="main-form-fotgot ">
+      <div
+        className={
+          dark ? "main-form-fotgot dark-main-form-fotgot" : "main-form-fotgot"
+        }
+      >
         <div className="container-header-forgot">
           <div>
             <i className="fas fa-question"></i>
@@ -44,10 +51,18 @@ export default function ForgotPass(props) {
               value={email}
               required
             />
-            <div className="action-forgot-pass">
-              <button type="submit">Send</button>
+            <div
+              className={
+                dark
+                  ? "action-forgot-pass dark-action-forgot-pass"
+                  : "action-forgot-pass"
+              }
+            >
+              <button className="bt-send-pass" type="submit">
+                Send
+              </button>
               <button
-                id="cancel-send-mail"
+                className="cancel-send-mail bt-send-pass"
                 type="button"
                 onClick={() => {
                   return handleCloseForgotPass();

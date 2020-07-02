@@ -1,4 +1,5 @@
 .bt-bar {
+    display: none;
     border: none;
     margin-left: 15px;
     cursor: pointer;
@@ -88,5 +89,12 @@
 
     &:hover {
         background-color: #444444;
+    }
+}
+// Reponsive
+
+@media only screen and (max-width: 768px) {
+    .bt-bar {
+        display: block;
     }
 }

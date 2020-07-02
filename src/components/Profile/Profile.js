@@ -288,7 +288,13 @@ export default function Profile(props) {
               <div className="header-history-income">
                 <span>History income</span>
               </div>
-              <div className="full-container-history-income dark-full-container-history-income">
+              <div
+                className={
+                  DarkMode
+                    ? "full-container-history-income dark-full-container-history-income"
+                    : "full-container-history-income"
+                }
+              >
                 {dataIcome.map((data) => {
                   return (
                     <div className="container-history-income">

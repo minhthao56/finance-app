@@ -88,10 +88,10 @@ export default function Nav(props) {
         </div>
 
         <div className="container-link-nav">
-          <Link className="link-nav" to="/">
+          <Link className="link-nav" to="/" id="link-nav-preponsive">
             Home
           </Link>
-          <div className="container-profile">
+          <div className="container-profile" id="link-nav-preponsive">
             <Link className="link-nav" to="/user/profile">
               <div
                 className="avatar-nav"

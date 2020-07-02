@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import DashBoard from "./components/Dashboard/Dashboard";
 import Home from "./components/Home/Home";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
@@ -175,7 +174,7 @@ export default function App() {
               blurHome={blurHome}
             />
           </Route>
-          <Route exact path={`/dashboard`} component={DashBoard} />
+
           <Route exact path={`/user/signup`} component={SignUp} />
           <Route exact path={`/user/login`} component={Login} />
           <Route exact path={`/user/profile`}>

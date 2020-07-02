@@ -16,6 +16,13 @@
         border-radius: 3px;
         padding: 10px;
     }
+    // Dark mode
+    .dark-main-form-fotgot {
+        background-color: $color-dark;
+        h3 {
+            color: white;
+        }
+    }
     .container-header-forgot {
         display: flex;
         margin-bottom: 10px;
@@ -52,12 +59,23 @@
     .action-forgot-pass {
         margin-left: auto;
 
-        #cancel-send-mail {
+        .cancel-send-mail {
             color: #d62828;
             margin-left: 10px;
             background-color: #faf0f0;
             &:hover {
                 background-color: #f5c9c9;
+            }
+        }
+    }
+    .dark-action-forgot-pass {
+        .bt-send-pass {
+            background-color: #333333;
+            &:hover {
+                background-color: #444444;
+            }
+            &:focus {
+                outline: none;
             }
         }
     }

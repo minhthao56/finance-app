@@ -68,6 +68,12 @@ export default function Dawer() {
       action: false,
     });
   };
+  const handleDeleteBlur = () => {
+    dispatch({
+      type: "BLUR_OFF",
+      action: false,
+    });
+  };
   return (
     <div className="container-dawer">
       <button type="button" onClick={showDrawer} className="bt-bar">
@@ -96,7 +102,11 @@ export default function Dawer() {
         }
       >
         <div className="container-body-dawer">
-          <Link className="link-nav link-dawer" to="/">
+          <Link
+            className="link-nav link-dawer"
+            to="/"
+            onClick={handleDeleteBlur}
+          >
             <div>
               <svg
                 width="1em"
@@ -124,7 +134,7 @@ export default function Dawer() {
               <button
                 onClick={handleSignOut}
                 className="span-sign-out bt-sign-out"
-                id="bt-dark-dawer"
+                id={darkMode ? "bt-dark-dawer" : null}
               >
                 Sign Out
               </button>
@@ -139,7 +149,10 @@ export default function Dawer() {
               </div>
             </div>
 
-            <div className="container-profile dawr-profile">
+            <div
+              className="container-profile dawr-profile"
+              onClick={handleDeleteBlur}
+            >
               <Link className="link-nav" to="/user/profile">
                 <div
                   className="avatar-nav avatar-dawer"
