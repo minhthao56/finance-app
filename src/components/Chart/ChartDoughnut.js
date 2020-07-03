@@ -111,9 +111,9 @@ export default function ChartDoughnut(props) {
         <div>
           <div className="header-detail-total-expens">
             <div>
-              <i class="fas fa-list"></i>
+              <i className="fas fa-list"></i>
             </div>
-            <em>Detail expense</em>
+            <em>Detail</em>
           </div>
           <div
             className={
@@ -122,9 +122,9 @@ export default function ChartDoughnut(props) {
                 : "main-detail-donghnut"
             }
           >
-            {percentAndColorChart.map((data) => {
+            {percentAndColorChart.map((data, key) => {
               return (
-                <div className="detail-dought">
+                <div className="detail-dought" key={key}>
                   <span id="title-percent">
                     {data.title} | {data.percent}%
                   </span>
@@ -149,8 +149,8 @@ export default function ChartDoughnut(props) {
             legend: {
               display: false,
             },
-            aspectRatio: 1,
           }}
+          id="doughnut-cavant"
         />
       </div>
     </div>

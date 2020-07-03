@@ -25,6 +25,7 @@ export default function User() {
 
   const DarkMode = JSON.parse(localStorage.getItem("dark"));
   const dispatch = useDispatch();
+  const url = "https://fsklf.sse.codesandbox.io/";
 
   const validationCharacter = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+]+$/, "g");
   const validationEmail = new RegExp(
@@ -57,7 +58,7 @@ export default function User() {
       };
 
       axios
-        .post("https://pks85.sse.codesandbox.io/users/login", user)
+        .post(url + "users/login", user)
         .then((res) => {
           setValueEmail("");
           setValuePassword("");

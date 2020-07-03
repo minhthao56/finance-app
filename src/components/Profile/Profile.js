@@ -21,7 +21,7 @@ export default function Profile(props) {
   const Blur = useSelector((state) => state.Blur);
 
   const { dataIcome, checkLogined } = props;
-  const url = "https://pks85.sse.codesandbox.io/";
+  const url = "https://fsklf.sse.codesandbox.io/";
   const DarkMode = useSelector((state) => state.DarkMode);
 
   const handleChangeInfo = (num) => {
@@ -295,9 +295,9 @@ export default function Profile(props) {
                     : "full-container-history-income"
                 }
               >
-                {dataIcome.map((data) => {
+                {dataIcome.map((data, key) => {
                   return (
-                    <div className="container-history-income">
+                    <div className="container-history-income" key={key}>
                       <div className="icon-income-wallet">
                         <svg
                           width="0.9em"

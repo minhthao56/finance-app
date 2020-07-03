@@ -25,7 +25,7 @@ export default function User() {
   const [isErrCreateUser, setIsErrCreateUser] = useState(false);
 
   const DarkMode = JSON.parse(localStorage.getItem("dark"));
-
+  const url = "https://fsklf.sse.codesandbox.io/";
   let history = useHistory();
 
   const validationEmail = new RegExp(
@@ -79,7 +79,7 @@ export default function User() {
       };
 
       axios
-        .post("https://pks85.sse.codesandbox.io/users/signup", user)
+        .post(url + "users/signup", user)
         .then((res) => {
           setValueName("");
           setValueEmail("");

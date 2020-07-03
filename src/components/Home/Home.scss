@@ -13,6 +13,8 @@
 .light {
   background-color: white;
 }
+.display-category {
+}
 // dark mode
 .dark {
   background-color: #000000;
@@ -27,11 +29,12 @@
   color: white;
 }
 #blur {
-  filter: blur(8px);
+  filter: blur(4px);
 }
 #blurNav {
-  filter: blur(8px);
+  filter: blur(4px);
 }
+
 // Responsive
 @media only screen and (max-width: 768px) {
   .container-home {
@@ -47,7 +50,7 @@
 }
 @media only screen and (max-width: 576px) {
   .container-home {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }

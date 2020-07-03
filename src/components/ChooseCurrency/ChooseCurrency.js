@@ -12,7 +12,7 @@ export default function ChooseCurrency(props) {
 
   const { handleLoseChooseCurrency } = props;
 
-  const url = "https://pks85.sse.codesandbox.io/";
+  const url = "https://fsklf.sse.codesandbox.io/";
 
   const fullDataCurrency = [];
   for (let i = 0; i < dataCurrency.length; i++) {
@@ -82,14 +82,6 @@ export default function ChooseCurrency(props) {
             }
           >
             <button type="submit">CHOOSE</button>
-            <button
-              type="button"
-              className={
-                DarkMode ? "lose-choose darklose-choose" : "lose-choose"
-              }
-            >
-              LOSE
-            </button>
           </div>
         </form>
       </div>

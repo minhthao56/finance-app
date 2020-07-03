@@ -19,9 +19,9 @@ export default function HistortyADay(props) {
   }, [data]);
   return (
     <div>
-      {data.map((d) => {
+      {data.map((d, k) => {
         return (
-          <div className="container-price-card">
+          <div className="container-price-card" key={k}>
             <div
               className={
                 DarkMode

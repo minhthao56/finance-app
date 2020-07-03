@@ -36,9 +36,9 @@ export default function CardEpense(props) {
             : "main-container-time-expense"
         }
       >
-        {dataExpense.map((data) => {
+        {dataExpense.map((data, key) => {
           return (
-            <div className="container-time-expense">
+            <div className="container-time-expense" key={key}>
               <div className="time-expense">
                 <div className="main-time-expense">
                   <span id="date-main">
